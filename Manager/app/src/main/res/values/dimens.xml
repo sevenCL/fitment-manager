@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- =============== tab -->
+    <dimen name="tab_text">11sp</dimen>
+    <dimen name="tab_text_margin">1dp</dimen>
+    <dimen name="tab_top_text">16sp</dimen>
+
+</resources>

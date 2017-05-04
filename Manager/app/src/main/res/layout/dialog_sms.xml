@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sms_touch_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="btClick">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="322dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/margin_max_2x"
+        android:layout_marginRight="@dimen/margin_max_2x"
+        android:background="@drawable/dialog_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:onClick="btClick">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/bind_mobile"
+                android:textSize="@dimen/text_main" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_max_2x"
+            android:layout_marginRight="@dimen/padding_max_2x"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/line" />
+
+            <EditText
+                android:id="@+id/sms_mobile_et"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="@dimen/padding_max_2x"
+                android:background="@drawable/edit_print_bg"
+                android:hint="@string/hint_mobile"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingLeft="@dimen/padding_max"
+                android:textColor="@color/black_30"
+                android:textColorHint="@color/gray_60"
+                android:textSize="@dimen/input_front" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="@dimen/padding_max"
+                android:background="@drawable/edit_print_bg">
+
+                <TextView
+                    android:id="@+id/sms_code_btn"
+                    android:layout_width="75dp"
+                    android:layout_height="27dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/padding_max"
+                    android:background="@drawable/point_border"
+                    android:gravity="center"
+                    android:text="@string/sms"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/input_front"
+                    android:onClick="btClick"/>
+
+                <EditText
+                    android:id="@+id/sms_code_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_toLeftOf="@+id/sms_code_btn"
+                    android:background="@null"
+                    android:hint="@string/sms_code"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingLeft="@dimen/padding_max"
+                    android:textColor="@color/black_30"
+                    android:textColorHint="@color/gray_60"
+                    android:textSize="@dimen/input_front" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/sms_next_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_min"
+                android:layout_marginTop="@dimen/padding_max_2x"
+                android:onClick="btClick">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_cir" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/next"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

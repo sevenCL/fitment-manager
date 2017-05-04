@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/home_container_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/home_actionbar_rl"/>
+
+    <RelativeLayout
+        android:id="@+id/home_actionbar_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/act_home_actionbar" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

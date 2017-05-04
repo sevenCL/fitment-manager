@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/denglubg"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="204dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/touxiangbiankuang" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/touxiangzhanweitu" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/over_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/register_over"
+            android:textSize="@dimen/text_max"
+            android:textColor="@color/black_30"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/padding_max">
+
+            <TextView
+                android:id="@+id/over_hint_1_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/input_front"
+                android:textColor="@color/primary_70"
+                android:text="@string/hint_register_success" />
+
+            <TextView
+                android:id="@+id/over_hint_2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/input_front"
+                android:textColor="@color/primary_70"
+                android:text="@string/hint_register_success_2"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line"
+            android:layout_marginTop="45dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <RelativeLayout
+            android:id="@+id/over_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_min"
+            android:layout_marginLeft="@dimen/margin_max_2x"
+            android:layout_marginRight="@dimen/margin_max_2x"
+            android:layout_marginTop="45dp"
+            android:onClick="btClick">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_cir" />
+
+            <TextView
+                android:id="@+id/over_btn_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/authentication"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_main" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/over_home_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_min"
+            android:layout_marginLeft="@dimen/margin_max_2x"
+            android:layout_marginRight="@dimen/margin_max_2x"
+            android:layout_marginTop="@dimen/padding_max"
+            android:onClick="btClick">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_cir_border" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/home"
+                android:textColor="@color/black_30"
+                android:textSize="@dimen/text_main" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/over_skip_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_max_2x"
+        android:text="@string/hint_skip_1"
+        android:textSize="@dimen/input_front"
+        android:textColor="@color/primary_70"/>
+
+</RelativeLayout>

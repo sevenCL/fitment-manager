@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/impression">
+
+    <com.seven.library.view.AutoLoadRecyclerView
+        android:id="@+id/city_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_min"/>
+
+    <com.seven.library.view.widget.Button
+        android:id="@+id/city_next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height"
+        android:layout_marginTop="@dimen/padding_max"
+        android:onClick="btClick"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        app:gTouchEffect="ripple"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_max"/>
+
+</RelativeLayout>

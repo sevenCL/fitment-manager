@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/root_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@+id/base_title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:background="@color/color_primary">
+
+        <RelativeLayout
+            android:id="@+id/base_left_rl"
+            android:layout_width="@dimen/title"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@drawable/btn_click">
+
+            <ImageView
+                android:id="@+id/base_left_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/base_button_left"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/base_title_tv"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <RelativeLayout
+            android:id="@+id/base_right_rl"
+            android:layout_width="@dimen/title"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:background="@drawable/btn_click">
+
+            <ImageView
+                android:id="@+id/base_right_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/base_button_right"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/base_right_text_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:background="@drawable/btn_click">
+
+            <TextView
+                android:id="@+id/base_right_text_tv"
+                style="@style/TitleTextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

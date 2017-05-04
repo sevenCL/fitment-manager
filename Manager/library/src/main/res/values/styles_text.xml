@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 主色调字体样式 -->
+    <style name="TextPrimary">
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name="android:textColor">@color/color_primary</item>
+    </style>
+
+    <!-- 常规字体样式 标题、内容、提示 -->
+    <style name="TextTitle">
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">@color/title</item>
+    </style>
+
+    <style name="TextContent">
+        <item name="android:textSize">@dimen/text_content</item>
+        <item name="android:textColor">@color/content</item>
+    </style>
+
+    <style name="TextHint">
+        <item name="android:textSize">@dimen/text_content</item>
+        <item name="android:textColor">@color/hint</item>
+    </style>
+
+    <!-- ====================状态 -->
+    <style name="TextStatus">
+        <item name="android:textSize">@dimen/text_content</item>
+        <item name="android:textColor">@color/status</item>
+    </style>
+</resources>

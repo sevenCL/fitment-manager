@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.seven.library">
+
+    <application
+        android:name=".application.LibApplication"
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.sheet.PhotoSheet"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityDialog" />
+
+        <activity
+            android:name=".ui.activity.PictureCutActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.PictureChoiceActivity"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

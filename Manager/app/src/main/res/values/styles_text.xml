@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ==================标签 -->
+    <style name="BottomTabText">
+        <item name="android:textColor">@color/tab_text</item>
+        <item name="android:textSize">@dimen/tab_text</item>
+    </style>
+
+    <style name="TopTabText">
+        <item name="android:textColor">@color/top_tab_text</item>
+        <item name="android:textSize">@dimen/tab_top_text</item>
+    </style>
+</resources>

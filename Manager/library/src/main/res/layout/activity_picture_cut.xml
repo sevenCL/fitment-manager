@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.seven.library.view.cut.ClipViewLayout
+        android:id="@+id/cut_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:clipBorderWidth="2dp"
+        app:clipType="circle"
+        app:mHorizontalPadding="100dp" />
+    <!--矩形  app:clipType="rectangle"-->
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/impression">
+
+    <com.seven.library.view.SwipeToRefreshLayout
+        android:id="@+id/order_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.seven.library.view.AutoLoadRecyclerView
+                android:id="@+id/order_recycler_views"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/padding_max"/>
+
+            <LinearLayout
+                android:id="@+id/order_null_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="还没有订单哦!"
+                    android:layout_marginTop="@dimen/margin_min"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.seven.library.view.SwipeToRefreshLayout>
+
+</RelativeLayout>

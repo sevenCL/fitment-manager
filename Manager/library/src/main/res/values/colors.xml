@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#F9CC01</color>
+    <color name="color_primary_dark">#F9CC01</color>
+    <color name="color_accent">#FF4081</color>
+    <color name="impression">#F3F4F6</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="press">#33000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="line">#e7e7e7</color>
+    <color name="border_line">#9a999f</color>
+
+    <color name="primary_70">#caa70c</color>
+    <color name="primary_80">#ffd200</color>
+
+    <color name="black_30">#272727</color>
+    <color name="gray_70">#7d7d7d</color>
+    <color name="gray_60">#b6b6b6</color>
+
+    <color name="title">#333333</color>
+    <color name="content">#666666</color>
+    <color name="hint">#999999</color>
+    <color name="status">#e51c23</color>
+
+    <!-- 环形进度条颜色配置 -->
+    <color name="bg_pgb_round_normal">#D5D5D5</color>
+    <color name="bg_pgb_round_progress_blue">#3EC6FF</color>
+    <color name="bg_pgb_round_progress_orange">#369924</color>
+    <color name="text_black">#3B3B3B</color>
+
+</resources>
