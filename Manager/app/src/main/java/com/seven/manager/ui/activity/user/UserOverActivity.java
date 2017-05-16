@@ -14,7 +14,6 @@ import com.seven.library.utils.ResourceUtils;
 import com.seven.library.utils.ToastUtils;
 import com.seven.manager.R;
 import com.seven.manager.ui.activity.HomeActivity;
-import com.seven.manager.ui.dialog.PasswordDialog;
 
 /**
  * 用户流程结束页
@@ -35,9 +34,12 @@ public class UserOverActivity extends BaseActivity {
     private TextView mHint2;
 
     //结束跳转按钮文本
-    private TextView mOverBtnTv;
+    private TextView mHomeTv;
+
     //主页按钮
     private RelativeLayout mHomeBtn;
+
+    private Handler mHandler;
 
     /**
      * 跳转方法
@@ -74,7 +76,7 @@ public class UserOverActivity extends BaseActivity {
         mHint1 = getView(mHint1, R.id.over_hint_1_tv);
         mHint2 = getView(mHint2, R.id.over_hint_2_tv);
 
-        mOverBtnTv = getView(mOverBtnTv, R.id.over_btn_tv);
+        mHomeTv = getView(mHomeTv, R.id.over_home_tv);
         mHomeBtn = getView(mHomeBtn, R.id.over_home_btn);
     }
 
@@ -91,9 +93,10 @@ public class UserOverActivity extends BaseActivity {
             mFlowTv.setText(ResourceUtils.getInstance().getText(R.string.password_over));
             mHint1.setText(ResourceUtils.getInstance().getText(R.string.hint_password_success));
             mHint2.setText(ResourceUtils.getInstance().getText(R.string.hint_password_success_2));
-            mOverBtnTv.setText(ResourceUtils.getInstance().getText(R.string.reset_login));
-            mHomeBtn.setVisibility(View.GONE);
+            mHomeTv.setText(ResourceUtils.getInstance().getText(R.string.reset_login));
         }
+
+        mHandler = new Handler();
 
         autoSkip();
 
@@ -105,22 +108,15 @@ public class UserOverActivity extends BaseActivity {
 
         switch (id) {
 
-            //流程天转
-            case R.id.over_btn:
-
+            //主页
+            case R.id.over_home_btn:
                 if (flow == RunTimeConfig.FlowConfig.REGISTER) {
-                    ToastUtils.getInstance().showToast("跳转到实名认证界面");
+                    HomeActivity.start(true);
                     ActivityStack.getInstance().finishActivity(LoginActivity.class);
                 } else
                     finish();
 
-                break;
-
-            //主页
-            case R.id.over_home_btn:
-
-                HomeActivity.start(true);
-                ActivityStack.getInstance().finishActivity(LoginActivity.class);
+                mHandler.removeCallbacks(runnable);
 
                 break;
         }
@@ -130,18 +126,18 @@ public class UserOverActivity extends BaseActivity {
      * 自动跳转
      */
     private void autoSkip() {
-
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-
-                if (flow == RunTimeConfig.FlowConfig.REGISTER) {
-                    ToastUtils.getInstance().showToast("跳转到实名认证界面");
-                    ActivityStack.getInstance().finishActivity(LoginActivity.class);
-                } else
-                    finish();
-            }
-        }, 3000);
-
+        mHandler.postDelayed(runnable, 5000);
     }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if (flow == RunTimeConfig.FlowConfig.REGISTER) {
+                ActivityStack.getInstance().finishActivity(LoginActivity.class);
+                HomeActivity.start(true);
+            } else
+                finish();
+        }
+    };
 
 }

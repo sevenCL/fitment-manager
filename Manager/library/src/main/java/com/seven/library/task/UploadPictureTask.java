@@ -98,7 +98,7 @@ public class UploadPictureTask extends AsyncTask<Void, Integer, Integer> impleme
     @Override
     protected void onPostExecute(Integer integer) {
 
-        RequestUtils.getInstance().upload(mRequestId, Urls.IMG_UPLOAD, mNewPathList, mType, this);
+        RequestUtils.getInstance(Urls.IMG_UPLOAD).upload(mRequestId, mNewPathList, mType, this);
 
     }
 
@@ -138,7 +138,7 @@ public class UploadPictureTask extends AsyncTask<Void, Integer, Integer> impleme
                 for (String path : (List<String>) data)
                     mResultList.add(path);
 
-                mCallBack.uploadCallBack(mRequestId,mResultList);
+                mCallBack.uploadCallBack(mRequestId, mResultList);
 
                 ToastUtils.getInstance().showToast(R.string.msg_upload_success);
                 mDialog.refreshProgress(100);//progress==100时会延迟1s后dismiss

@@ -25,9 +25,9 @@ import com.seven.library.utils.ToastUtils;
 import com.seven.library.utils.blur.BlurBehind;
 import com.seven.library.utils.blur.OnBlurCompleteListener;
 import com.seven.manager.R;
-import com.seven.manager.model.http.RegisterModel;
+import com.seven.manager.model.user.RegisterModel;
 import com.seven.manager.ui.activity.HomeActivity;
-import com.seven.manager.ui.dialog.SmsDialog;
+import com.seven.manager.ui.dialog.user.SmsDialog;
 
 /**
  * 用户注册
@@ -199,7 +199,7 @@ public class LoginActivity extends BaseActivity implements HttpRequestCallBack {
 
         // TODO: 2016/12/16 登录
 
-        RequestUtils.getInstance().login(RunTimeConfig.RequestConfig.LOGIN, Urls.LOGIN,
+        RequestUtils.getInstance(Urls.LOGIN).login(RunTimeConfig.RequestConfig.LOGIN,
                 mUserEt.getText().toString(), mPasswordEt.getText().toString(), this);
 
     }
@@ -212,7 +212,7 @@ public class LoginActivity extends BaseActivity implements HttpRequestCallBack {
             //登录
             case RunTimeConfig.RequestConfig.LOGIN:
 
-                LogUtils.println(this.getClass().getName()+" onSucceed LOGIN request " + result);
+                LogUtils.println(this.getClass().getName() + " onSucceed LOGIN request " + result);
 
                 JsonHelper.getInstance().jsonObject(result, RegisterModel.class, true, null, new JsonCallBack() {
                     @Override
@@ -221,6 +221,7 @@ public class LoginActivity extends BaseActivity implements HttpRequestCallBack {
                             return;
 
                         LibApplication.token = ((RegisterModel) data).getToken();
+                        LibApplication.branchId = ((RegisterModel) data).getBranchId();
                         SharedData.getInstance().setUserCode(((RegisterModel) data).getUserCode());
 
                         ToastUtils.getInstance().showToast(R.string.hint_login_success);

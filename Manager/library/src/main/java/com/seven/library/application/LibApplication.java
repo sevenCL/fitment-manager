@@ -7,6 +7,8 @@ import com.baidu.mapapi.SDKInitializer;
 import com.frankchen.mvc.controller.common.BaseApplication;
 import com.frankchen.mvc.model.common.ActionFactory;
 import com.seven.library.R;
+import com.seven.library.action.OfferAction;
+import com.seven.library.action.PersonalityAction;
 import com.seven.library.action.PictureSelectAction;
 import com.seven.library.action.RefreshAction;
 import com.seven.library.config.RunTimeConfig;
@@ -30,6 +32,10 @@ public class LibApplication extends BaseApplication {
 
     public static String token;
 
+    public static long branchId;
+
+    public static int type;
+
     public static LibApplication getInstance() {
         return (LibApplication) appContextInstance;
     }
@@ -45,6 +51,8 @@ public class LibApplication extends BaseApplication {
         //注册动作
         ActionFactory.getSingleInstance().registerAction(new PictureSelectAction());
         ActionFactory.getSingleInstance().registerAction(new RefreshAction());
+        ActionFactory.getSingleInstance().registerAction(new OfferAction());
+        ActionFactory.getSingleInstance().registerAction(new PersonalityAction());
 
         //初始化图片缓存信息
         ImageLoadProxy.initImageLoader(getInstance(), new File(RunTimeConfig.PathConfig.CACHE_PATH));

@@ -25,7 +25,7 @@ import com.seven.library.utils.ResourceUtils;
 import com.seven.library.view.AutoLoadRecyclerView;
 import com.seven.manager.R;
 import com.seven.manager.adapter.CityAdapter;
-import com.seven.manager.model.http.CityModel;
+import com.seven.manager.model.res.CityModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -142,7 +142,7 @@ public class CityActivity extends BaseTitleActivity implements HttpRequestCallBa
         }
 
         if (resCity == null || TextUtils.isEmpty(resCity.getContent()))
-            RequestUtils.getInstance().resource(RunTimeConfig.RequestConfig.RES_CITY, Urls.CITY, 0, this);
+            RequestUtils.getInstance(Urls.RES_CITY).resource(RunTimeConfig.RequestConfig.RES_CITY, 0, this);
 
     }
 
@@ -193,21 +193,21 @@ public class CityActivity extends BaseTitleActivity implements HttpRequestCallBa
 
         JsonHelper.getInstance().jsonArray(resCity.getContent(),
                 CityModel.class, true, new JsonCallBack() {
-            @Override
-            public void onSucceed(Object data) {
+                    @Override
+                    public void onSucceed(Object data) {
 
-                for (CityModel model : (List<CityModel>) data)
-                    mDataList.add(model);
+                        for (CityModel model : (List<CityModel>) data)
+                            mDataList.add(model);
 
-                if (mAdapter != null)
-                    mAdapter.notifyDataSetChanged();
-            }
+                        if (mAdapter != null)
+                            mAdapter.notifyDataSetChanged();
+                    }
 
-            @Override
-            public void onFailure(String error) {
+                    @Override
+                    public void onFailure(String error) {
 
-            }
-        });
+                    }
+                });
     }
 
     /**
@@ -246,7 +246,7 @@ public class CityActivity extends BaseTitleActivity implements HttpRequestCallBa
                         resCity = new ResCity();
                         resCity.setId(1);
                         resCity.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
-                        resCity.setParams(Urls.CITY);
+                        resCity.setParams(Urls.RES_CITY);
                         resCity.setContent(result);
                         resCity.setCreateTime(System.currentTimeMillis());
 
@@ -289,7 +289,7 @@ public class CityActivity extends BaseTitleActivity implements HttpRequestCallBa
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View view, int position, Object... object) {
 
         if (!mDataList.get(position).isSelect()) {
 

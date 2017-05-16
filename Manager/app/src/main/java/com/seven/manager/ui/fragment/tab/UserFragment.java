@@ -9,6 +9,7 @@ import com.seven.library.application.LibApplication;
 import com.seven.library.base.BaseFragment;
 import com.seven.library.db.share.SharedData;
 import com.seven.manager.R;
+import com.seven.manager.ui.activity.offer.OfferActivity;
 import com.seven.manager.ui.activity.user.LoginActivity;
 
 /**

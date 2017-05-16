@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.seven.library.application.LibApplication;
 import com.seven.library.base.BaseTitleActivity;
 import com.seven.library.callback.HttpRequestCallBack;
 import com.seven.library.callback.JsonCallBack;
@@ -26,7 +27,7 @@ import com.seven.library.utils.LogUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.library.utils.ToastUtils;
 import com.seven.manager.R;
-import com.seven.manager.model.http.RegisterModel;
+import com.seven.manager.model.user.RegisterModel;
 
 /**
  * 设置密码
@@ -231,11 +232,11 @@ public class PasswordActivity extends BaseTitleActivity implements HttpRequestCa
         // TODO: 2016/12/20 注册
 
         if (flow == RunTimeConfig.FlowConfig.REGISTER)
-            RequestUtils.getInstance().register(RunTimeConfig.RequestConfig.REGISTER, Urls.REGISTER,
+            RequestUtils.getInstance(Urls.REGISTER).register(RunTimeConfig.RequestConfig.REGISTER,
                     mobile, mPasswordAgainEt.getText().toString(), cityId, this);
         else
-            RequestUtils.getInstance().passwordForget(RunTimeConfig.RequestConfig.PASSWORD_FORGET,
-                    Urls.PASSWORD_FORGET, mobile, mPasswordAgainEt.getText().toString(), this);
+            RequestUtils.getInstance(Urls.PASSWORD_FORGET).passwordForget(RunTimeConfig.RequestConfig.PASSWORD_FORGET,
+                    mobile, mPasswordAgainEt.getText().toString(), this);
     }
 
     @Override
@@ -246,13 +247,16 @@ public class PasswordActivity extends BaseTitleActivity implements HttpRequestCa
             //注册
             case RunTimeConfig.RequestConfig.REGISTER:
 
-                LogUtils.println(this.getClass().getName()+" onSucceed REGISTER request " + result);
+                LogUtils.println(this.getClass().getName() + " onSucceed REGISTER request " + result);
 
                 JsonHelper.getInstance().jsonObject(result, RegisterModel.class, true, null, new JsonCallBack() {
                     @Override
                     public void onSucceed(Object data) {
                         if (data == null)
                             return;
+
+                        LibApplication.branchId = ((RegisterModel) data).getBranchId();
+                        LibApplication.token = ((RegisterModel) data).getToken();
 
                         ToastUtils.getInstance().showToast(R.string.hint_register_success);
 
@@ -272,7 +276,7 @@ public class PasswordActivity extends BaseTitleActivity implements HttpRequestCa
             //忘记密码
             case RunTimeConfig.RequestConfig.PASSWORD_FORGET:
 
-                LogUtils.println(this.getClass().getName()+" onSucceed PASSWORD_FORGET request " + result);
+                LogUtils.println(this.getClass().getName() + " onSucceed PASSWORD_FORGET request " + result);
 
                 JsonHelper.getInstance().jsonObject(result, RegisterModel.class,
                         true, null, new JsonCallBack() {

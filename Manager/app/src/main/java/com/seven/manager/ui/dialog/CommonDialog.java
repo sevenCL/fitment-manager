@@ -91,6 +91,12 @@ public class CommonDialog extends BaseDialog {
 
                 break;
 
+            case RunTimeConfig.DialogTagConfig.TAG_QUOTATION:
+
+                content = ResourceUtils.getInstance().getText(R.string.dialog_quotation);
+
+                break;
+
         }
 
         mContent.setText(content);

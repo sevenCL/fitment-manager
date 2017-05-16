@@ -13,7 +13,13 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+
+            minifyEnabled true
+
+            shrinkResources true
+
+            zipAlignEnabled true
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,4 +34,31 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile project(':library')
+
+    //可选，用于生成application类
+    provided('com.tencent.tinker:tinker-android-anno:1.7.3')
+    //tinker的核心库
+    compile('com.tencent.tinker:tinker-android-lib:1.7.3')
 }
+
+////apply tinker插件
+//apply plugin: 'com.tencent.tinker.patch'
+
+
+//def gitSha() {
+//    try {
+//        String gitRev = 'git rev-parse --short HEAD'.execute(null, project.rootDir).text.trim()
+//        if (gitRev == null) {
+//            throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+//        }
+//        return gitRev
+//    } catch (Exception e) {
+//        throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+//    }
+//}
+//
+//def javaVersion = JavaVersion.VERSION_1_7
+//
+//def getTinkerIdValue() {
+//    return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
+//}

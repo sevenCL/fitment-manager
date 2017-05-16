@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.frankchen.mvc.aidl.Task;
 import com.seven.library.base.BaseTitleActivity;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.library.task.ActivityStack;
@@ -75,6 +76,23 @@ public class HomeActivity extends BaseTitleActivity {
     @Override
     public void onRightTextClicked() {
 
+    }
+
+    @Override
+    public void onReceiveNotification(Task task) {
+        super.onReceiveNotification(task);
+
+        switch (task.getWhat()) {
+
+            case RunTimeConfig.ActionWhatConfig.QUOTATION_ORDER:
+
+                if (mOrderFg == null)
+                    mOrderFg = new OrderFragment();
+
+                mOrderFg.onReceiveNotification(task);
+                break;
+
+        }
     }
 
     @Override

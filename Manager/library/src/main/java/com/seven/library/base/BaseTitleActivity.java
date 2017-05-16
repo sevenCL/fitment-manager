@@ -143,6 +143,14 @@ public abstract class BaseTitleActivity extends BaseActivity {
     }
 
     /**
+     *
+     * @param visible
+     */
+    protected void setRightButtonVisible(int visible) {
+        rightBtn.setVisibility(visible);
+    }
+
+    /**
      * 设置"右"按钮的文本
      *
      * @param text

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/padding_max"
+    android:paddingRight="@dimen/padding_max">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_max_2x"
+        android:layout_marginTop="@dimen/padding_max_2x"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offer_personality_volume_hint_1"
+            android:textColor="@color/black_30"
+            android:textSize="@dimen/input_front" />
+
+        <TextView
+            android:id="@+id/personality_volume_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:textColor="@color/offer_text"
+            android:textSize="@dimen/input_front" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offer_personality_volume_hint_2"
+            android:textColor="@color/black_30"
+            android:textSize="@dimen/input_front" />
+
+        <TextView
+            android:id="@+id/personality_volume_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:textColor="@color/offer_text"
+            android:textSize="@dimen/input_front" />
+
+    </LinearLayout>
+
+    <com.seven.library.view.DashedLineView
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/offer_personality_volume_hint_3"
+            android:textColor="@color/black_30"
+            android:textSize="@dimen/input_front" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_min"
+        android:background="@drawable/btn_white_border">
+
+        <TextView
+            android:id="@+id/personality_volume_term_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/gray_60"
+            android:textSize="@dimen/text_min" />
+
+        <TextView
+            android:id="@+id/personality_volume_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/gray_60"
+            android:textSize="@dimen/text_min" />
+
+        <EditText
+            android:id="@+id/personality_volume_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/personality_volume_unit"
+            android:layout_toRightOf="@+id/personality_volume_term_name"
+            android:background="@null"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black_30"
+            android:textSize="@dimen/input_back" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/personality_volume_sure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_min"
+        android:layout_marginTop="@dimen/padding_max_2x"
+        android:onClick="btClick">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_cir" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_main" />
+
+    </RelativeLayout>
+
+</LinearLayout>

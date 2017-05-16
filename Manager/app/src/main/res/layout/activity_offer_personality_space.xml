@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/padding_max"
+    android:paddingRight="@dimen/padding_max">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/offer_personality_add_hint"
+            android:textColor="@color/black_30"
+            android:textSize="@dimen/input_back" />
+
+    </RelativeLayout>
+
+    <com.seven.library.view.AutoLoadRecyclerView
+        android:id="@+id/offer_personality_space_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.seven.library.view.DashedLineView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="@dimen/padding_max"
+        android:layout_marginTop="@dimen/padding_max" />
+
+    <RelativeLayout
+        android:id="@+id/offer_personality_space_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_min"
+        android:onClick="btClick">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_cir" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_main" />
+
+    </RelativeLayout>
+
+</LinearLayout>

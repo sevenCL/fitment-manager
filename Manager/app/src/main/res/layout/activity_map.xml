@@ -116,7 +116,7 @@
         <ImageView
             android:id="@+id/map_line"
             android:layout_width="1px"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/map_rl"
             android:background="@color/line" />
 

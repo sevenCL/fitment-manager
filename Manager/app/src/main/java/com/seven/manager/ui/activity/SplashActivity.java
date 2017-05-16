@@ -3,6 +3,7 @@ package com.seven.manager.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -18,7 +19,7 @@ import com.seven.library.http.Urls;
 import com.seven.library.json.JsonHelper;
 import com.seven.library.utils.LogUtils;
 import com.seven.manager.R;
-import com.seven.manager.model.http.RegisterModel;
+import com.seven.manager.model.user.RegisterModel;
 import com.seven.manager.service.ResourceService;
 import com.seven.manager.ui.activity.user.LoginActivity;
 
@@ -66,8 +67,22 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
 
         startService(serviceIntent);
 
-        splash();
+    }
 
+    public void btClick(View view) {
+
+        int id = view.getId();
+
+        switch (id) {
+
+            case R.id.splash_test_btn:
+
+                LibApplication.type = 1;
+
+                break;
+        }
+
+        splash();
     }
 
     /**
@@ -119,7 +134,7 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
         if (TextUtils.isEmpty(SharedData.getInstance().getUserCode()))
             LoginActivity.start(true);
         else
-            RequestUtils.getInstance().loginAvoid(RunTimeConfig.RequestConfig.LOGIN_AVOID, Urls.LOGIN_AVOID,
+            RequestUtils.getInstance(Urls.LOGIN_AVOID).loginAvoid(RunTimeConfig.RequestConfig.LOGIN_AVOID,
                     SharedData.getInstance().getUserCode(), this);
 
     }
@@ -143,6 +158,8 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
 
                                 LibApplication.token = ((RegisterModel) data).getToken();
 
+                                LibApplication.branchId = ((RegisterModel) data).getBranchId();
+
                                 HomeActivity.start(true);
                             }
 
@@ -159,6 +176,8 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
 
     @Override
     public void onFailure(String error, int requestId) {
+
+        LogUtils.println(this.getClass().getName() + " onFailure LOGIN_AVOID request " + error);
 
     }
 

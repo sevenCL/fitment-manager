@@ -149,6 +149,12 @@ public class RunTimeConfig {
         public static final String SERIALIZABLE = "Serializable";
 
         /**
+         * 数据个性项模型
+         */
+        public static final String TERM = "term";
+
+
+        /**
          * 注册、忘记密码流程 @link FlowConfig
          */
         public static final String FLOW = "flow";
@@ -316,6 +322,22 @@ public class RunTimeConfig {
          */
         public static final int ORDER_ACCEPT = 1103;
 
+        //=================================================== 报价
+
+        /**
+         * 报价-套餐房间
+         */
+        public static final int OFFER_HOUSE = 1201;
+
+        /**
+         * 报价-套餐
+         */
+        public static final int OFFER_PACKAGE = 1202;
+
+        /**
+         * 报价单
+         */
+        public static final int OFFER_QUOTATION = 1203;
 
         //=================================================== 资源包
 
@@ -323,6 +345,11 @@ public class RunTimeConfig {
          * 服务城市
          */
         public static final int RES_CITY = 1501;
+
+        /**
+         * 个性项
+         */
+        public static final int RES_PERSONALITY = 1502;
 
         //==================================================== 图片
 
@@ -354,6 +381,17 @@ public class RunTimeConfig {
          */
         public static final String REFRESH = "refresh";
 
+        /**
+         * 报价数据、操作动作传递消息
+         */
+        public static final String OFFER = "offer";
+
+        /**
+         * 个性项方量
+         */
+        public static final String PERSONALITY = "personality";
+
+
     }
 
     /**
@@ -379,6 +417,20 @@ public class RunTimeConfig {
 
         //--------REFRESH
         public static final int USER_STATUS = 100;
+
+        public static final int QUOTATION_ORDER= 101;
+
+        //--------OFFER
+
+        /**
+         * 是否显示添加按钮
+         */
+        public static final int OFFER_ADD = 200;
+
+        /**
+         * 个性项方量
+         */
+        public static final int PERSONNALITY = 250;
     }
 
     /**
@@ -498,14 +550,14 @@ public class RunTimeConfig {
         //----------------------- order status
 
         /**
-         * 0新预约、1已取消、2待报价、3已报价、4待开工、5已失效
+         * 1新预约、-1已取消、2待报价、3已报价、4待开工、5已失效
          */
-        public static final int ORDER_STATUS_1 = 0;
-        public static final int ORDER_STATUS_2 = 1;
-        public static final int ORDER_STATUS_3 = 2;
-        public static final int ORDER_STATUS_4 = 3;
-        public static final int ORDER_STATUS_5 = 4;
-        public static final int ORDER_STATUS_6 = 5;
+        public static final int ORDER_STATUS_NEW = 1;
+        public static final int ORDER_STATUS_CANCEL = -1;
+        public static final int ORDER_STATUS_OFFER = 2;
+        public static final int ORDER_STATUS_OFFER_OVER = 3;
+        public static final int ORDER_STATUS_START = 4;
+        public static final int ORDER_STATUS_INVALID = 5;
 
         /**
          * 操作状态  -1拒绝  1接受
@@ -530,9 +582,16 @@ public class RunTimeConfig {
          */
         public static final int TAG_ACCEPT = 2;
 
+        /**
+         * 是否保存报价
+         */
+        public static final int TAG_QUOTATION = 3;
+
     }
 
-
+    /**
+     * 地图配置
+     */
     public static class MapConfig {
 
         public static final int TYPE_NORMAL = 0;
@@ -540,6 +599,61 @@ public class RunTimeConfig {
         public static final int TYPE_TRAFFIC = 2;
         public static final int TYPE_HEATING = 3;
 
+    }
+
+    /**
+     * 模型配置
+     */
+    public static class ModelConfig {
+
+        //------------------报价-套餐
+        public static final int OFFER_PACKAGE_ITEM = 0;
+        public static final int OFFER_PACKAGE_TOTAL = 1;
+
+        //------------------报价-个性项
+        public static final int OFFER_PERSONALITY_ITEM = 0;
+        public static final int OFFER_PERSONALITY_TOTAL = 1;
+
+        //------------------报价单
+        public static final int QUOTATION_TITLE = 0;
+        public static final int QUOTATION_PACKAGE = 1;
+        public static final int QUOTATION_PERSONALITY = 2;
+        public static final int QUOTATION_DATE = 3;
+
+    }
+
+    /**
+     * 房间配置
+     */
+    public static class HouseConfig {
+
+        //1厅  2室  3厨  4卫  5阳台 6其他
+        public static final int HALL = 1;
+        public static final int ROOM = 2;
+        public static final int KITCHEN = 3;
+        public static final int TOILET = 4;
+        public static final int BALCONY = 5;
+        public static final int OTHER = 6;
+
+    }
+
+    /**
+     * 选中状态配置
+     */
+    public static class SelectConfig {
+
+        public static final int SELECT_NOT = 0;
+        public static final int SELECTED = 1;
+
+    }
+
+    /**
+     * 报价fragment标记
+     */
+    public static class OfferFGTagConfig {
+        public static final int TAG_PACKAGE = 0;
+        public static final int TAG_PERSONALITY = 1;
+        public static final int TAG_DATE = 2;
     }
 
 }

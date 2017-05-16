@@ -1,7 +1,5 @@
 package com.seven.library.http;
 
-import android.content.Intent;
-
 import com.seven.library.R;
 import com.seven.library.application.LibApplication;
 import com.seven.library.callback.HttpRequestCallBack;
@@ -36,10 +34,19 @@ public class RequestUtils {
 
     private RequestLoading loadingDialog;
 
+    public static String uri;
+
     private RequestUtils() {
+
     }
 
-    public static RequestUtils getInstance() {
+    public static RequestUtils getInstance(String url) {
+
+        uri = url;
+
+        if (LibApplication.type == 1) {
+            uri = url.replace("dev", "test");
+        }
 
         if (requestUtils == null) {
             synchronized (RequestUtils.class) {
@@ -133,13 +140,12 @@ public class RequestUtils {
      * 上传文件
      *
      * @param requestId
-     * @param url
      * @param type
      * @param callBack
      */
-    public void upload(final int requestId, String url, List<String> list, int type, final HttpRequestCallBack callBack) {
+    public void upload(final int requestId, List<String> list, int type, final HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
 
         params.addBodyParameter("type", String.valueOf(type));
 
@@ -208,16 +214,15 @@ public class RequestUtils {
      * 短信验证码
      *
      * @param requestId
-     * @param url
      * @param mobile
      * @param flow
      * @param callBack
      */
-    public void sms(final int requestId, String url, String mobile, String flow, HttpRequestCallBack callBack) {
+    public void sms(final int requestId, String mobile, String flow, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("mobile", mobile);
         params.addBodyParameter("flow", flow);
 
@@ -228,17 +233,16 @@ public class RequestUtils {
      * 验证码验证
      *
      * @param requestId
-     * @param url
      * @param mobile
      * @param code
      * @param flow
      * @param callBack
      */
-    public void smsCheck(final int requestId, String url, String mobile, String code, String flow, HttpRequestCallBack callBack) {
+    public void smsCheck(final int requestId, String mobile, String code, String flow, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("mobile", mobile);
         params.addBodyParameter("code", code);
         params.addBodyParameter("flow", flow);
@@ -250,17 +254,16 @@ public class RequestUtils {
      * 注册
      *
      * @param requestId
-     * @param url
      * @param mobile
      * @param password
      * @param cityId
      * @param callBack
      */
-    public void register(int requestId, String url, String mobile, String password, long cityId, HttpRequestCallBack callBack) {
+    public void register(int requestId, String mobile, String password, long cityId, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("mobile", mobile);
         params.addBodyParameter("password", password);
         params.addBodyParameter("serviceCity", String.valueOf(cityId));
@@ -272,16 +275,15 @@ public class RequestUtils {
      * 忘记密码
      *
      * @param requestId
-     * @param url
      * @param mobile
      * @param password
      * @param callBack
      */
-    public void passwordForget(int requestId, String url, String mobile, String password, HttpRequestCallBack callBack) {
+    public void passwordForget(int requestId, String mobile, String password, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("mobile", mobile);
         params.addBodyParameter("password", password);
 
@@ -292,16 +294,15 @@ public class RequestUtils {
      * 登录
      *
      * @param requestId
-     * @param url
      * @param mobile
      * @param password
      * @param callBack
      */
-    public void login(int requestId, String url, String mobile, String password, HttpRequestCallBack callBack) {
+    public void login(int requestId, String mobile, String password, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("mobile", mobile);
         params.addBodyParameter("password", password);
 
@@ -312,13 +313,12 @@ public class RequestUtils {
      * 免登录
      *
      * @param requestId
-     * @param url
      * @param userCode
      * @param callBack
      */
-    public void loginAvoid(int requestId, String url, String userCode, HttpRequestCallBack callBack) {
+    public void loginAvoid(int requestId, String userCode, HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("userCode", userCode);
 
         post(params, requestId, callBack);
@@ -328,13 +328,12 @@ public class RequestUtils {
      * 用户信息
      *
      * @param requestId
-     * @param url
      * @param hashCode
      * @param callBack
      */
-    public void userInfo(int requestId, String url, int hashCode, HttpRequestCallBack callBack) {
+    public void userInfo(int requestId, int hashCode, HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("hashCode", String.valueOf(hashCode));
 
         post(params, requestId, callBack);
@@ -344,14 +343,13 @@ public class RequestUtils {
      * 实名认证
      *
      * @param requestId
-     * @param url
      * @param userName
      * @param idCard
      * @param callBack
      */
-    public void idAudit(int requestId, String url, String userName, String idCard, HttpRequestCallBack callBack) {
+    public void idAudit(int requestId, String userName, String idCard, HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("userName", userName);
         params.addBodyParameter("idCard", idCard);
 
@@ -362,19 +360,18 @@ public class RequestUtils {
      * 保存资料并提交审核
      *
      * @param requestId
-     * @param url
      * @param userName
      * @param sex
      * @param idCard
      * @param seniority
      * @param callBack
      */
-    public void dataSave(int requestId, String url, String userName, String idCard, int sex,
+    public void dataSave(int requestId, String userName, String idCard, int sex,
                          String seniority, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("userName", userName);
         params.addBodyParameter("idCard", idCard);
         params.addBodyParameter("sex", String.valueOf(sex));
@@ -387,13 +384,12 @@ public class RequestUtils {
      * 获取用户资料
      *
      * @param requestId
-     * @param url
      * @param hashCode
      * @param callBack
      */
-    public void userData(int requestId, String url, int hashCode, HttpRequestCallBack callBack) {
+    public void userData(int requestId, int hashCode, HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("hashCode", String.valueOf(hashCode));
 
         post(params, requestId, callBack);
@@ -403,15 +399,14 @@ public class RequestUtils {
      * 校验密码
      *
      * @param requestId
-     * @param url
      * @param password
      * @param callBack
      */
-    public void passwordCheck(int requestId, String url, String password, HttpRequestCallBack callBack) {
+    public void passwordCheck(int requestId, String password, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("password", password);
 
         post(params, requestId, callBack);
@@ -421,16 +416,15 @@ public class RequestUtils {
      * 重置手机号码
      *
      * @param requestId
-     * @param url
      * @param mobile
      * @param code
      * @param callBack
      */
-    public void resetMobile(int requestId, String url, String mobile, String code, HttpRequestCallBack callBack) {
+    public void resetMobile(int requestId, String mobile, String code, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("mobile", mobile);
         params.addBodyParameter("code", code);
 
@@ -442,13 +436,12 @@ public class RequestUtils {
      * 获取关联机构信息
      *
      * @param requestId
-     * @param url
      * @param hashCode
      * @param callBack
      */
-    public void company(int requestId, String url, int hashCode, HttpRequestCallBack callBack) {
+    public void company(int requestId, int hashCode, HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("hashCode", String.valueOf(hashCode));
 
         post(params, requestId, callBack);
@@ -458,30 +451,116 @@ public class RequestUtils {
      * 获取预约订单
      *
      * @param requestId
-     * @param url
      * @param callBack
      */
-    public void orderList(int requestId, String url, HttpRequestCallBack callBack) {
+    public void orderList(int requestId, HttpRequestCallBack callBack) {
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
 
         post(params, requestId, callBack);
     }
 
     /**
+     * 预约单状态  接受、拒绝
      *
      * @param requestId
-     * @param url
      * @param orderNumber
      * @param status
      */
-    public void orderStatus(int requestId,String url,String orderNumber,int status,HttpRequestCallBack callBack){
+    public void orderStatus(int requestId, String orderNumber, int status, HttpRequestCallBack callBack) {
 
         showDialog();
 
-        RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("orderNumber", orderNumber);
         params.addBodyParameter("status", String.valueOf(status));
+
+        post(params, requestId, callBack);
+
+    }
+
+    /**
+     * 报价房间
+     *
+     * @param requestId
+     * @param planId
+     * @param page
+     * @param limit
+     * @param callBack
+     */
+    public void offerHouse(int requestId, long planId, int page, int limit, HttpRequestCallBack callBack) {
+
+        RequestParams params = new RequestParams(uri);
+        params.addBodyParameter("planId", String.valueOf(planId));
+        params.addBodyParameter("page", String.valueOf(page));
+        params.addBodyParameter("limit", String.valueOf(limit));
+
+        post(params, requestId, callBack);
+
+    }
+
+    /**
+     * 报价套餐
+     *
+     * @param requestId
+     * @param id
+     * @param branchId
+     * @param hashCode
+     * @param callBack
+     */
+    public void offerPackage(int requestId, long id, long branchId, int hashCode, HttpRequestCallBack callBack) {
+
+        RequestParams params = new RequestParams(uri);
+        params.addBodyParameter("id", String.valueOf(id));
+        params.addBodyParameter("branchId", String.valueOf(branchId));
+        params.addBodyParameter("hashCode", String.valueOf(hashCode));
+
+        post(params, requestId, callBack);
+
+
+    }
+
+    /**
+     * 发送报价单
+     *
+     * @param requestId
+     * @param branchId
+     * @param ownerId
+     * @param planId
+     * @param projectId
+     * @param area
+     * @param halls
+     * @param rooms
+     * @param cookhouse
+     * @param washroom
+     * @param balcony
+     * @param others
+     * @param itemsListJson
+     * @param addItemsListJson
+     * @param hashCode
+     * @param callBack
+     */
+    public void sendQuotation(int requestId, long branchId, long ownerId, long planId, long projectId,
+                              double area, int halls, int rooms, int cookhouse, int washroom, int balcony,
+                              int others, String itemsListJson, String addItemsListJson, int hashCode, HttpRequestCallBack callBack) {
+
+        showDialog();
+
+        RequestParams params = new RequestParams(uri);
+        params.addBodyParameter("branchId", String.valueOf(branchId));
+        params.addBodyParameter("ownerId", String.valueOf(ownerId));
+        params.addBodyParameter("planId", String.valueOf(planId));
+        params.addBodyParameter("projectId", String.valueOf(projectId));
+        params.addBodyParameter("area", String.valueOf(area));
+        params.addBodyParameter("halls", String.valueOf(halls));
+        params.addBodyParameter("rooms", String.valueOf(rooms));
+        params.addBodyParameter("cookhouse", String.valueOf(cookhouse));
+        params.addBodyParameter("washroom", String.valueOf(washroom));
+        params.addBodyParameter("balcony", String.valueOf(balcony));
+        params.addBodyParameter("others", String.valueOf(others));
+        params.addBodyParameter("itemsListJson", itemsListJson);
+        params.addBodyParameter("addItemsListJson", addItemsListJson);
+        params.addBodyParameter("hashCode", String.valueOf(hashCode));
 
         post(params, requestId, callBack);
 
@@ -493,12 +572,11 @@ public class RequestUtils {
      * 获取资源
      *
      * @param requestId
-     * @param url
      * @param hashCode
      * @param callBack
      */
-    public void resource(final int requestId, String url, int hashCode, final HttpRequestCallBack callBack) {
-        RequestParams params = new RequestParams(url);
+    public void resource(final int requestId, int hashCode, final HttpRequestCallBack callBack) {
+        RequestParams params = new RequestParams(uri);
         params.addBodyParameter("hashCode", String.valueOf(hashCode));
 
         post(params, requestId, callBack);

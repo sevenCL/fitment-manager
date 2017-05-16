@@ -50,7 +50,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:onClick="btClick"
-                android:src="@drawable/delete"
+                android:src="@drawable/remove"
                 android:visibility="gone" />
 
             <EditText
@@ -117,7 +117,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:onClick="btClick"
-                android:src="@drawable/delete"
+                android:src="@drawable/remove"
                 android:visibility="gone" />
 
             <EditText

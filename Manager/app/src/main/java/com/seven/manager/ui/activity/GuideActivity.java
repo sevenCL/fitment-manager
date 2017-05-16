@@ -155,7 +155,7 @@ public class GuideActivity extends BaseActivity implements ListItemCallBack {
 
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View view, int position, Object... object) {
 
         LoginActivity.start(true);
     }

@@ -92,11 +92,33 @@ public class Urls {
      */
     public static final String ORDER_STATUS = SERVER + "/reservation/reservationOrderAgent/app/assignResponse";
 
+    //===================================================================== 报价
+
+    /**
+     * 报价-房间
+     */
+    public static final String OFFER_HOUSE = SERVER + "/quotation/quotationPlanSpace/list";
+
+    /**
+     * 套餐信息
+     */
+    public static final String OFFER_PACKAGE = SERVER + "/quotation/quotationPlan/getInfo";
+
+    /**
+     * 发送报价单
+     */
+    public static final String OFFER_QUOTATION = SERVER + "/quotation/quotationProjectOrder/save";
+
     //===================================================================== 资源包
 
     /**
      * 服务城市
      */
-    public static final String CITY = SERVER + "/user/region/queryCities";
+    public static final String RES_CITY = SERVER + "/user/region/queryCities";
+
+    /**
+     * 个性项
+     */
+    public static final String RES_PERSONALITY = SERVER + "/quotation/item/getMaterialInfoCategoryItemsByBranchId";
 
 }

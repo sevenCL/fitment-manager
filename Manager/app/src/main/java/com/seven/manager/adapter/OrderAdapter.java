@@ -15,7 +15,7 @@ import com.seven.library.config.RunTimeConfig;
 import com.seven.library.utils.DateFormatUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.manager.R;
-import com.seven.manager.model.http.OrderModel;
+import com.seven.manager.model.order.OrderModel;
 
 import java.util.List;
 
@@ -65,7 +65,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         holder.mArea.setText(model.getArea() + "m²");
 
-        holder.mAddress.setText(model.getAddress());
+        holder.mHouse.setText(model.getHouseNumber());
 
         holder.mSubmitTime.setText(ResourceUtils.getInstance().getFormatText(R.string.submit_time,
                 DateFormatUtils.getInstance().millisecondToDateSecondPoint(model.getStartTime())));
@@ -85,7 +85,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         switch (model.getStatus()) {
 
             //新预约
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_1:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_NEW:
 
                 hintStr = ResourceUtils.getInstance().getFormatText(R.string.end_time,
                         DateFormatUtils.getInstance().millisecondToDateSecondC(model.getEndTime()));
@@ -95,7 +95,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
                 break;
 
             //已取消
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_2:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_CANCEL:
 
                 hintStr = ResourceUtils.getInstance().getText(R.string.order_cancel);
 
@@ -104,7 +104,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
                 break;
 
             //待报价
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_3:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_OFFER:
 
                 hintStr = ResourceUtils.getInstance().getFormatText(R.string.order_offer_start,
                         DateFormatUtils.getInstance().millisecondToDateSecondC(model.getEndTime()));
@@ -116,7 +116,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
                 break;
 
             //已报价
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_4:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_OFFER_OVER:
 
                 hintStr = ResourceUtils.getInstance().getText(R.string.order_offer_over);
 
@@ -127,7 +127,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
                 break;
 
             //待开工
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_5:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_START:
 
                 hintStr = ResourceUtils.getInstance().getFormatText(R.string.order_project_start,
                         DateFormatUtils.getInstance().millisecondToDateSecondC(model.getEndTime()));
@@ -139,7 +139,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
                 break;
 
             //已失效
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_6:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_INVALID:
 
                 hintStr = ResourceUtils.getInstance().getText(R.string.order_invalid);
 
@@ -162,6 +162,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
     public class OrderHolder extends BaseViewHolder implements View.OnClickListener {
 
+        //---------------------------基本信息
         //预约单状态
         private TextView mStatus;
 
@@ -172,7 +173,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         private TextView mArea;
 
         //地址
-        private TextView mAddress;
+        private TextView mHouse;
 
         //定位
         private ImageView mLocation;
@@ -186,6 +187,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         //预约单号
         private TextView mOrderNumber;
 
+        //-----------------------------------新预约
         //新预约
         private RelativeLayout mOrderNewLayout;
 
@@ -195,15 +197,22 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         //接受
         private RelativeLayout mAcceptBtn;
 
+        //-------------------------------------待报价
         //待报价
         private RelativeLayout mOrderOfferLayout;
 
+        //报价
+        private RelativeLayout mOrderOfferBtn;
+
+        //-------------------------------------已报价
         //已报价
         private RelativeLayout mOrderOfferOverLayout;
 
+        //-------------------------------------待开工g
         //待开工
         private RelativeLayout mOrderProStartLayout;
 
+        //-------------------------------------已失效
         //已失效
         private RelativeLayout mOrderInvalidLayout;
 
@@ -213,7 +222,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             mStatus = getView(mStatus, R.id.order_status_tv);
             mName = getView(mName, R.id.order_name_tv);
             mArea = getView(mArea, R.id.order_area_tv);
-            mAddress = getView(mAddress, R.id.order_address_tv);
+            mHouse = getView(mHouse, R.id.order_address_tv);
             mLocation = getView(mLocation, R.id.order_location_iv);
             mHint = getView(mHint, R.id.order_hint_tv);
             mSubmitTime = getView(mSubmitTime, R.id.order_submit_time_tv);
@@ -224,6 +233,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             mAcceptBtn = getView(mAcceptBtn, R.id.order_accept_btn);
 
             mOrderOfferLayout = getView(mOrderOfferLayout, R.id.order_offer_rl);
+            mOrderOfferBtn = getView(mOrderOfferBtn, R.id.order_offer_btn);
 
             mOrderOfferOverLayout = getView(mOrderOfferOverLayout, R.id.order_offer_over_rl);
 
@@ -234,6 +244,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             mRefuseBtn.setOnClickListener(this);
             mAcceptBtn.setOnClickListener(this);
             mLocation.setOnClickListener(this);
+
+            mOrderOfferBtn.setOnClickListener(this);
+
         }
 
         @Override

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_60" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical"
+        android:paddingBottom="24dp"
+        android:paddingLeft="@dimen/padding_max"
+        android:paddingRight="@dimen/padding_max"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/personality_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_60"
+            android:textSize="@dimen/text_min" />
+
+        <com.seven.library.view.DashedLineView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offer_personality_total_money"
+            android:textColor="@color/gray_60"
+            android:textSize="@dimen/text_min" />
+
+        <TextView
+            android:id="@+id/personality_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/offer_text"
+            android:textSize="27sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

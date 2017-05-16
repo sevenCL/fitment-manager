@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/offer_title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary">
+
+        <include layout="@layout/act_offer_actionbar" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/offer_bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/offer_save_btn"
+            android:layout_width="119dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_primary"
+            android:onClick="btClick">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/offer_save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/input_back" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/offer_save_btn"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+               <TextView
+                   android:id="@+id/offer_packager_tv"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="套餐总价：0.00元"
+                   android:textColor="@color/gray_70"
+                   android:textSize="@dimen/text_min"/>
+
+                <TextView
+                    android:id="@+id/offer_personality_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个  性  项：0.00元"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/text_min"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/offer_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工期：60天"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/text_min"/>
+
+                <TextView
+                    android:id="@+id/offer_total_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="合计：0.00元"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/text_min"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/offer_container_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/offer_bottom_rl"
+        android:layout_below="@+id/offer_title_rl" />
+
+</RelativeLayout>

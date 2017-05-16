@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.manager.R;
-import com.seven.manager.model.http.CityModel;
+import com.seven.manager.model.res.CityModel;
 
 import java.util.List;
 

@@ -28,6 +28,9 @@
     <string name="sure">确定</string>
     <string name="cancel">取消</string>
     <string name="submit">提交</string>
+    <string name="compile">编辑</string>
+    <string name="send">发送</string>
+    <string name="selected">选择</string>
 
     <string name="insert">添加</string>
     <string name="update">更新</string>
@@ -66,6 +69,14 @@
     <string name="order_status_4">已报价</string>
     <string name="order_status_5">待开工</string>
     <string name="order_status_6">已失效</string>
+
+    <!-- house type -->
+    <string name="house_hall">厅</string>
+    <string name="house_room">室</string>
+    <string name="house_kitchen">厨</string>
+    <string name="house_toilet">卫</string>
+    <string name="house_balcony">阳台</string>
+    <string name="house_other">其他</string>
 
     <!-- data status -->
     <string name="data_status_1">请认证</string>

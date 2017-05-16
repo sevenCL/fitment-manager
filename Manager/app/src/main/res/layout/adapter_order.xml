@@ -17,7 +17,6 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="2dp"
-        android:text="新预约"
         android:textColor="@color/white"
         android:textSize="@dimen/input_front" />
 
@@ -44,7 +43,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="刘娜"
                 android:textColor="@color/black_30"
                 android:textSize="@dimen/text_main" />
 
@@ -66,7 +64,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="152m²"
                 android:textColor="@color/black_30"
                 android:textSize="@dimen/text_main" />
 
@@ -91,7 +88,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:layout_toRightOf="@+id/order_address_iv"
-                android:text="新怡花园B区7栋1单元1302"
                 android:textColor="@color/black_30"
                 android:textSize="@dimen/text_main" />
 
@@ -116,7 +112,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/padding_max"
-            android:text="该预约将于xxxx失效"
             android:textColor="@color/gray_70"
             android:textSize="@dimen/input_front" />
 
@@ -125,7 +120,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:text="提交时间：2017.04.22 16:58"
             android:textColor="@color/gray_60"
             android:textSize="10sp" />
 
@@ -133,7 +127,6 @@
             android:id="@+id/order_number_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="预约单号：YY201704220001"
             android:textColor="@color/gray_60"
             android:textSize="10sp" />
 
@@ -159,7 +152,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_cir_border" />
+                    android:background="@drawable/btn_cir_gray_border" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -168,7 +161,6 @@
                     android:text="@string/order_refuse"
                     android:textColor="@color/black_30"
                     android:textSize="@dimen/text_main" />
-
 
             </RelativeLayout>
 
@@ -240,7 +232,8 @@
                 android:layout_below="@+id/order_offer_btn"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="24dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"

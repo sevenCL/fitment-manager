@@ -75,11 +75,11 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.dialog.SmsDialog"
+            android:name=".ui.dialog.user.SmsDialog"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.dialog.PasswordDialog"
+            android:name=".ui.dialog.user.PasswordDialog"
             android:screenOrientation="portrait" />
 
         <activity
@@ -88,6 +88,26 @@
 
         <activity
             android:name=".ui.activity.MapActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.offer.OfferActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.offer.OfferPersonalitySpaceActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.offer.OfferPersonalityTermActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.offer.OfferPersonalityVolumeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.offer.OfferQuotationActivity"
             android:screenOrientation="portrait" />
 
         <service android:name=".service.ResourceService" />

@@ -14,10 +14,9 @@
             android:layout_height="match_parent">
 
             <com.seven.library.view.AutoLoadRecyclerView
-                android:id="@+id/order_recycler_views"
+                android:id="@+id/order_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/padding_max"/>
+                android:layout_height="match_parent"/>
 
             <LinearLayout
                 android:id="@+id/order_null_ll"
@@ -29,13 +28,16 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hint"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="还没有订单哦!"
-                    android:layout_marginTop="@dimen/margin_min"/>
+                    android:text="@string/order_hint"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/input_front"
+                    android:layout_marginTop="@dimen/padding_max"/>
 
             </LinearLayout>
 

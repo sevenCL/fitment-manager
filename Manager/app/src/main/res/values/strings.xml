@@ -6,6 +6,9 @@
     <string name="password_forget">忘记密码</string>
     <string name="home">主页</string>
     <string name="map_location">工地位置</string>
+    <string name="offer_compile">编辑报价</string>
+    <string name="offer_personality_add">添加施工项</string>
+    <string name="offer_see">查看报价</string>
 
     <!-- user -->
     <string name="login">登录</string>
@@ -39,8 +42,10 @@
     <string name="hint_register_success_2">为方便接单,请前往个人中心完善资料并实名认证</string>
     <string name="hint_password_success">您已成功注册秀图管家</string>
     <string name="hint_password_success_2">为方便接单,请前往个人中心完善资料并实名认证</string>
-    <string name="hint_skip_1">3s自动进入实名认证页面</string>
+    <string name="hint_skip_1">3s自动进入主页</string>
     <string name="hint_skip_2">3s自动进入登录界面</string>
+    <string name="hint_refuse_success">拒绝成功</string>
+    <string name="hint_accept_success">接受成功</string>
 
     <!-- error -->
     <string name="error_user">请输入正确的手机号码</string>
@@ -54,6 +59,7 @@
     <string name="bottom_tab_user">我的</string>
 
     <!-- order -->
+    <string name="order_hint">还没有预约单哦</string>
     <string name="order_refuse">拒绝</string>
     <string name="order_accept">接受</string>
     <string name="order_offer">报价</string>
@@ -68,5 +74,70 @@
     <!-- dialog -->
     <string name="dialog_refuse">确认拒绝预约？</string>
     <string name="dialog_accept">确认接受预约？</string>
+    <string name="dialog_quotation">确认保存报价？</string>
+
+    <!-- offer -->
+    <string name="offer_package">399套餐</string>
+    <string name="offer_personality">个性项</string>
+    <string name="offer_date">工期</string>
+    <string name="offer_save">保存报价</string>
+
+    <string name="offer_total_package" formatted="false">套餐总价：%s元</string>
+    <string name="offer_total_personality" formatted="false">个&#160;&#160;性&#160;&#160;项：%s元</string>
+    <string name="offer_total_date" formatted="false">工期：%s天</string>
+    <string name="offer_total_count" formatted="false">总计：%s元</string>
+
+    <string name="offer_package_area">净空面积</string>
+    <string name="offer_package_perimeter">周长</string>
+    <string name="offer_package_perimeter_unit">m</string>
+    <string name="offer_package_area_unit">m²</string>
+    <string name="offer_package_total_money">套餐总价</string>
+    <string name="offer_package_min_area" formatted="false">不满%sm²</string>
+    <string name="offer_package_min_area_two" formatted="false">按%sm²计算</string>
+    <string name="offer_package_total_area" formatted="false">总净空面积%sm²</string>
+
+    <string name="offer_personality_total_money">个性项总价</string>
+    <string name="offer_personality_add_hint">选择需要添加施工项目的空间</string>
+
+    <string name="offer_package_hint">你还没添加房间哦</string>
+    <string name="offer_add_house">添加房间</string>
+    <string name="offer_personality_hint">你还没添加个性项哦</string>
+    <string name="offer_add_personality">添加个性项</string>
+
+    <string name="offer_personality_term_search_hint">输入关键字或编码搜索</string>
+
+    <string name="offer_personality_term_space_hint_1">为</string>
+    <string name="offer_personality_term_space_hint_2">添加施工项目</string>
+
+    <string name="offer_personality_term_project">项目</string>
+    <string name="offer_personality_term_number">编号</string>
+    <string name="offer_personality_term_price">单价</string>
+    <string name="offer_personality_term_volume" formatted="false">%s方量</string>
+
+    <string name="offer_personality_volume_hint_1">你已为</string>
+    <string name="offer_personality_volume_hint_2">选择</string>
+    <string name="offer_personality_volume_hint_3">请输入方量</string>
+
+    <string name="offer_personality_price" formatted="false">单价：%s</string>
+    <string name="offer_personality_volume" formatted="false">方量：%s</string>
+    <string name="offer_personality_small_total" formatted="false">小计：%s</string>
+    <string name="offer_personality_count" formatted="false">个性项%s项</string>
+
+    <string name="offer_quotation_total_hint">工程总报价</string>
+
+    <string name="offer_quotation_house">房间</string>
+    <string name="offer_quotation_area">净空面积</string>
+    <string name="offer_quotation_perimeter">周长</string>
+    <string name="offer_quotation_package_money">套餐总价</string>
+    <string name="offer_quotation_term">项目</string>
+    <string name="offer_quotation_volume">方量</string>
+    <string name="offer_quotation_price">价格</string>
+    <string name="offer_quotation_personality_money">个性项总价</string>
+    <string name="offer_quotation_date_area" formatted="false">房屋面积%sm²，标准工期60工作日</string>
+
+    <!-- toast -->
+    <string name="toast_volume">请输入方量</string>
+    <string name="toast_offer_save">请添加房间</string>
+    <string name="toast_send">发送成功</string>
 
 </resources>

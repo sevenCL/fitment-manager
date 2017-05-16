@@ -26,7 +26,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:onClick="btClick"
-            android:src="@drawable/delete"
+            android:src="@drawable/remove"
             android:visibility="invisible" />
 
         <EditText
@@ -79,7 +79,7 @@
             android:layout_marginRight="@dimen/padding_max"
             android:layout_centerVertical="true"
             android:onClick="btClick"
-            android:src="@drawable/delete"
+            android:src="@drawable/remove"
             android:visibility="invisible" />
 
     </RelativeLayout>

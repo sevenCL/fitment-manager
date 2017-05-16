@@ -9,6 +9,6 @@ import android.view.View;
  */
 public interface ListItemCallBack {
 
-    void onItemClick(View view, int position);
+    void onItemClick(View view, int position,Object... object);
 
 }

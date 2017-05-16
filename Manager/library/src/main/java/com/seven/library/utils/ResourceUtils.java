@@ -175,21 +175,49 @@ public class ResourceUtils {
 
         switch (status) {
 
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_1:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_NEW:
                 return getText(R.string.order_status_1);
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_2:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_CANCEL:
                 return getText(R.string.order_status_2);
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_3:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_OFFER:
                 return getText(R.string.order_status_3);
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_4:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_OFFER_OVER:
                 return getText(R.string.order_status_4);
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_5:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_START:
                 return getText(R.string.order_status_5);
-            case RunTimeConfig.StatusConfig.ORDER_STATUS_6:
+            case RunTimeConfig.StatusConfig.ORDER_STATUS_INVALID:
                 return getText(R.string.order_status_6);
+            default:
+                return "";
+        }
+    }
+
+    /**
+     * 获取房间
+     *
+     * @param type
+     * @return
+     */
+    public String HouseType(int type) {
+
+        switch (type) {
+
+            case RunTimeConfig.HouseConfig.HALL:
+                return getText(R.string.house_hall);
+            case RunTimeConfig.HouseConfig.ROOM:
+                return getText(R.string.house_room);
+            case RunTimeConfig.HouseConfig.KITCHEN:
+                return getText(R.string.house_kitchen);
+            case RunTimeConfig.HouseConfig.TOILET:
+                return getText(R.string.house_toilet);
+            case RunTimeConfig.HouseConfig.BALCONY:
+                return getText(R.string.house_balcony);
+            case RunTimeConfig.HouseConfig.OTHER:
+                return getText(R.string.house_other);
             default:
                 return "";
         }
 
     }
+
 }

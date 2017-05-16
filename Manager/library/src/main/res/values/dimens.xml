@@ -14,6 +14,7 @@
     <dimen name="margin_min">10dp</dimen>
     <dimen name="padding_max_2x">32dp</dimen>
     <dimen name="padding_max">16dp</dimen>
+    <dimen name="padding_max_2m">8dp</dimen>
     <dimen name="padding_min">6dp</dimen>
     <dimen name="hint_height">30dp</dimen>
 
@@ -36,6 +37,9 @@
     <dimen name="text_title">15sp</dimen>
     <dimen name="text_content">14sp</dimen>
     <dimen name="text_main">16sp</dimen>
+    <dimen name="input_front">12sp</dimen>
+    <dimen name="input_back">14sp</dimen>
+    <dimen name="text_min">10sp</dimen>
 
     <!-- dialog -->
     <dimen name="picker_height">160dp</dimen>
@@ -43,9 +47,5 @@
     <!-- 圆形进度条的文字大小 -->
     <dimen name="text_pgb_round">12dp</dimen>
     <dimen name="width_pgb_round">3dp</dimen>
-
-    <!-- user -->
-    <dimen name="input_front">12sp</dimen>
-    <dimen name="input_back">14sp</dimen>
 
 </resources>

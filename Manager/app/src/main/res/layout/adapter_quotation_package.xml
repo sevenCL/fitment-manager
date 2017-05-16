@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/quekou"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/middle"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp">
+
+            <ImageView
+                android:id="@+id/quotation_package_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/taocan"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_toRightOf="@+id/quotation_package_img"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/slash_bg"
+                android:layout_centerVertical="true"/>
+            
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offer_quotation_house"
+                    android:textSize="@dimen/input_front"
+                    android:textColor="@color/gray_60"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/offer_quotation_area"
+                        android:textSize="@dimen/input_front"
+                        android:textColor="@color/gray_60"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/offer_quotation_perimeter"
+                        android:textSize="@dimen/input_front"
+                        android:textColor="@color/gray_60"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/quotation_package_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_max"/>
+
+        <com.seven.library.view.DashedLineView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/quotation_package_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textSize="@dimen/input_front"
+            android:textColor="@color/gray_70"/>
+
+        <TextView
+            android:id="@+id/quotation_package_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textSize="@dimen/input_front"
+            android:textColor="@color/gray_70"/>
+
+        <com.seven.library.view.DashedLineView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/offer_quotation_package_money"
+            android:textSize="@dimen/input_front"
+            android:textColor="@color/gray_60"/>
+
+        <TextView
+            android:id="@+id/offer_quotation_package_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textSize="@dimen/text_main"
+            android:textColor="@color/black_30"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

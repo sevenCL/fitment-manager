@@ -156,9 +156,9 @@ public class PictureChoiceActivity extends BaseTitleActivity implements ListItem
 
             //从媒体数据库取出图片路径
             if (cursor != null) {
-/**
- * 第一个位置是否加入照相机功能(类似微信)
- */
+                /**
+                 * 第一个位置是否加入照相机功能(类似微信)
+                 */
                 mDataMap = new HashMap<>();
                 mDataMap.put("type", RunTimeConfig.PictureConfig.CAMERA);
                 mDataList.add(mDataMap);
@@ -224,7 +224,7 @@ public class PictureChoiceActivity extends BaseTitleActivity implements ListItem
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View view, int position, Object... object) {
 
         int type = (int) mDataList.get(position).get("type");
 

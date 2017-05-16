@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.frankchen.mvc.aidl.Task;
 import com.seven.library.application.LibApplication;
 import com.seven.library.base.BaseFragment;
 import com.seven.library.callback.DialogClickCallBack;
@@ -19,19 +20,20 @@ import com.seven.library.callback.LoadMoreListener;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.library.http.RequestUtils;
 import com.seven.library.http.Urls;
-import com.seven.library.json.JsonField;
 import com.seven.library.json.JsonHelper;
 import com.seven.library.task.ActivityStack;
 import com.seven.library.utils.LogUtils;
+import com.seven.library.utils.ResourceUtils;
 import com.seven.library.utils.ToastUtils;
 import com.seven.library.view.AutoLoadRecyclerView;
 import com.seven.library.view.SwipeToRefreshLayout;
 import com.seven.manager.R;
 import com.seven.manager.adapter.OrderAdapter;
 import com.seven.manager.db.DbOrderList;
-import com.seven.manager.model.http.OrderModel;
+import com.seven.manager.model.order.OrderModel;
 import com.seven.manager.ui.activity.HomeActivity;
 import com.seven.manager.ui.activity.MapActivity;
+import com.seven.manager.ui.activity.offer.OfferActivity;
 import com.seven.manager.ui.dialog.CommonDialog;
 
 import org.json.JSONException;
@@ -94,7 +96,7 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
         mSwipeRefresh = getView(mSwipeRefresh, R.id.order_swipe_refresh);
 
-        mRecyclerView = getView(mRecyclerView, R.id.order_recycler_views);
+        mRecyclerView = getView(mRecyclerView, R.id.order_recycler_view);
 
         mNullLayout = getView(mNullLayout, R.id.order_null_ll);
 
@@ -120,6 +122,21 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
     }
 
+    @Override
+    public void onReceiveNotification(Task task) {
+        super.onReceiveNotification(task);
+
+        switch (task.getWhat()) {
+
+            case RunTimeConfig.ActionWhatConfig.QUOTATION_ORDER:
+
+                onRefresh();
+
+                break;
+
+        }
+    }
+
     private void onRefresh() {
 
 //        int hashCode = 0;
@@ -128,8 +145,7 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 //            hashCode = dbOderList.getHashCode();
 
         // TODO: 2017/4/22 预约 订单
-        RequestUtils.getInstance().orderList(RunTimeConfig.RequestConfig.ORDER_LIST,
-                Urls.ORDER_LIST, this);
+        RequestUtils.getInstance(Urls.ORDER_LIST).orderList(RunTimeConfig.RequestConfig.ORDER_LIST, this);
 
     }
 
@@ -209,11 +225,6 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
                 // TODO: 2016/6/25  重新请求数据
 
                 OrderFragment.this.onRefresh();
-
-                if (mSwipeRefresh.isRefreshing())
-                    mSwipeRefresh.setRefreshing(false);
-
-
             }
         });
 
@@ -280,17 +291,45 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
             case RunTimeConfig.RequestConfig.ORDER_REFUSE:
 
-                ToastUtils.getInstance().showToast("拒绝成功");
+                JsonHelper.getInstance().jsonString(result, true, new JsonCallBack() {
+                    @Override
+                    public void onSucceed(Object data) {
 
-                getData();
+                        ToastUtils.getInstance().showToast(ResourceUtils.getInstance().getText(R.string.hint_refuse_success));
+
+                        onRefresh();
+
+                    }
+
+                    @Override
+                    public void onFailure(String error) {
+
+                        LogUtils.println(this.getClass().getName() + " onFailure ORDER_REFUSE json " + error);
+
+                    }
+                });
 
                 break;
 
             case RunTimeConfig.RequestConfig.ORDER_ACCEPT:
 
-                ToastUtils.getInstance().showToast("接受成功");
+                JsonHelper.getInstance().jsonString(result, true, new JsonCallBack() {
+                    @Override
+                    public void onSucceed(Object data) {
 
-                getData();
+                        ToastUtils.getInstance().showToast(ResourceUtils.getInstance().getText(R.string.hint_accept_success));
+
+                        onRefresh();
+
+                    }
+
+                    @Override
+                    public void onFailure(String error) {
+
+                        LogUtils.println(this.getClass().getName() + " onFailure ORDER_ACCEPT json " + error);
+
+                    }
+                });
 
                 break;
 
@@ -300,6 +339,16 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
     @Override
     public void onFailure(String error, int requestId) {
 
+        switch (requestId) {
+
+            case RunTimeConfig.RequestConfig.ORDER_LIST:
+
+                LogUtils.println(this.getClass().getName() + " onFailure ORDER_LIST request " + error);
+
+                break;
+
+        }
+
     }
 
     @Override
@@ -308,7 +357,7 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View view, int position, Object... object) {
 
         int id = view.getId();
 
@@ -342,6 +391,14 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
                 MapActivity.start(false, mDataList.get(position));
 
                 break;
+
+            //报价
+            case R.id.order_offer_btn:
+
+                OfferActivity.start(false, mDataList.get(position));
+
+                break;
+
         }
 
     }
@@ -375,17 +432,15 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
                         case RunTimeConfig.StatusConfig.ORDER_REFUSE:
 
-                            RequestUtils.getInstance().orderStatus(RunTimeConfig.RequestConfig.ORDER_REFUSE,
-                                    Urls.ORDER_STATUS, mDataList.get(position).getOrderNumber(),
-                                    RunTimeConfig.StatusConfig.ORDER_REFUSE, OrderFragment.this);
+                            RequestUtils.getInstance(Urls.ORDER_STATUS).orderStatus(RunTimeConfig.RequestConfig.ORDER_REFUSE,
+                                    mDataList.get(position).getOrderNumber(), RunTimeConfig.StatusConfig.ORDER_REFUSE, OrderFragment.this);
 
                             break;
 
                         case RunTimeConfig.StatusConfig.ORDER_ACCEPT:
 
-                            RequestUtils.getInstance().orderStatus(RunTimeConfig.RequestConfig.ORDER_ACCEPT,
-                                    Urls.ORDER_STATUS, mDataList.get(position).getOrderNumber(),
-                                    RunTimeConfig.StatusConfig.ORDER_ACCEPT, OrderFragment.this);
+                            RequestUtils.getInstance(Urls.ORDER_STATUS).orderStatus(RunTimeConfig.RequestConfig.ORDER_ACCEPT,
+                                    mDataList.get(position).getOrderNumber(), RunTimeConfig.StatusConfig.ORDER_ACCEPT, OrderFragment.this);
 
                             break;
 

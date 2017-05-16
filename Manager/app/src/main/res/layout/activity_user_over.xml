@@ -73,7 +73,7 @@
             android:layout_gravity="center_horizontal"/>
 
         <RelativeLayout
-            android:id="@+id/over_btn"
+            android:id="@+id/over_home_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_min"
             android:layout_marginLeft="@dimen/margin_max_2x"
@@ -87,36 +87,12 @@
                 android:background="@drawable/btn_cir" />
 
             <TextView
-                android:id="@+id/over_btn_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/authentication"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_main" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/over_home_btn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_min"
-            android:layout_marginLeft="@dimen/margin_max_2x"
-            android:layout_marginRight="@dimen/margin_max_2x"
-            android:layout_marginTop="@dimen/padding_max"
-            android:onClick="btClick">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/btn_cir_border" />
-
-            <TextView
+                android:id="@+id/over_home_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/home"
-                android:textColor="@color/black_30"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_main" />
 
         </RelativeLayout>

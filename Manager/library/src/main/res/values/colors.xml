@@ -23,6 +23,8 @@
     <color name="hint">#999999</color>
     <color name="status">#e51c23</color>
 
+    <color name="offer_text">#FF5555</color>
+
     <!-- 环形进度条颜色配置 -->
     <color name="bg_pgb_round_normal">#D5D5D5</color>
     <color name="bg_pgb_round_progress_blue">#3EC6FF</color>

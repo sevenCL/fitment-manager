@@ -218,7 +218,7 @@ public class SmsActivity extends BaseTitleActivity implements HttpRequestCallBac
 
         // TODO: 2016/12/19  短信请求
 
-        RequestUtils.getInstance().sms(RunTimeConfig.RequestConfig.SMS, Urls.SMS,
+        RequestUtils.getInstance(Urls.SMS).sms(RunTimeConfig.RequestConfig.SMS,
                 mMobileEt.getText().toString(), String.valueOf(flow), this);
     }
 
@@ -239,7 +239,7 @@ public class SmsActivity extends BaseTitleActivity implements HttpRequestCallBac
 
         // TODO: 2016/12/28 检验验证码
 
-        RequestUtils.getInstance().smsCheck(RunTimeConfig.RequestConfig.SMS_CHECK, Urls.SMS_CHECK,
+        RequestUtils.getInstance(Urls.SMS_CHECK).smsCheck(RunTimeConfig.RequestConfig.SMS_CHECK,
                 mMobileEt.getText().toString(), mCodeEt.getText().toString(), String.valueOf(flow), this);
     }
 

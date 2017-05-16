@@ -11,6 +11,7 @@ import com.seven.library.application.LibApplication;
 import com.seven.library.callback.HttpRequestCallBack;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.library.db.res.ResCity;
+import com.seven.library.db.res.ResPersonality;
 import com.seven.library.http.RequestUtils;
 import com.seven.library.http.Urls;
 import com.seven.library.json.JsonField;
@@ -34,6 +35,8 @@ public class ResourceService extends Service implements HttpRequestCallBack {
     private DbManager db;
 
     private ResCity resCity;
+
+    private ResPersonality resPersonality;
 
     @Nullable
     @Override
@@ -60,7 +63,9 @@ public class ResourceService extends Service implements HttpRequestCallBack {
 
         if (intent != null) {
 
-            city();
+//            city();
+
+            personality();
 
         }
 
@@ -76,7 +81,17 @@ public class ResourceService extends Service implements HttpRequestCallBack {
         if (resCity != null)
             hashCode = resCity.getHashCode();
 
-        request(RunTimeConfig.RequestConfig.RES_CITY, Urls.CITY, hashCode);
+        request(RunTimeConfig.RequestConfig.RES_CITY, Urls.RES_CITY, hashCode);
+    }
+
+    private void personality() {
+
+        int hashCode = 0;
+
+        if (resPersonality != null)
+            hashCode = resPersonality.getHashCode();
+
+        request(RunTimeConfig.RequestConfig.RES_PERSONALITY, Urls.RES_PERSONALITY, hashCode);
     }
 
     /**
@@ -90,8 +105,12 @@ public class ResourceService extends Service implements HttpRequestCallBack {
 
         Activity activity = ActivityStack.getInstance().peekActivity();
 
-        if (activity != null)
-            RequestUtils.getInstance().resource(requestId, url, hashCode, this);
+        try {
+            if (activity != null)
+                RequestUtils.getInstance(url).resource(requestId, hashCode, this);
+        } catch (NullPointerException e) {
+            LogUtils.println(this.getClass().getName()+e);
+        }
 
     }
 
@@ -103,7 +122,7 @@ public class ResourceService extends Service implements HttpRequestCallBack {
             //服务城市
             case RunTimeConfig.RequestConfig.RES_CITY:
 
-                LogUtils.println(this.getClass().getName()+" onSucceed RES_CITY request "+result);
+                LogUtils.println(this.getClass().getName() + " onSucceed RES_CITY request " + result);
 
                 try {
                     resCity = db.selector(ResCity.class).findFirst();
@@ -116,7 +135,7 @@ public class ResourceService extends Service implements HttpRequestCallBack {
                         resCity = new ResCity();
                         resCity.setId(1);
 //                        resCity.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
-                        resCity.setParams(Urls.CITY);
+                        resCity.setParams(Urls.RES_CITY);
                         resCity.setContent(result);
                         resCity.setCreateTime(System.currentTimeMillis());
 
@@ -139,6 +158,51 @@ public class ResourceService extends Service implements HttpRequestCallBack {
                         db.saveOrUpdate(resCity);
                     }
                 } catch (DbException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
+            case RunTimeConfig.RequestConfig.RES_PERSONALITY:
+
+                LogUtils.println(this.getClass().getName() + " onSucceed RES_PERSONALITY request " + result);
+
+                try {
+
+                    if (TextUtils.isEmpty(new JSONObject(result).getJSONObject(JsonField.DATA).toString()))
+                        return;
+
+                    resPersonality = db.selector(ResPersonality.class).findFirst();
+
+                    if (resPersonality == null) {//第一次创建表并添加数据
+
+                        if (TextUtils.isEmpty(result))
+                            return;
+
+                        resPersonality = new ResPersonality();
+                        resPersonality.setId(1);
+                        resPersonality.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
+                        resPersonality.setParams(Urls.RES_PERSONALITY);
+                        resPersonality.setContent(result);
+                        resPersonality.setCreateTime(System.currentTimeMillis());
+
+                        db.save(resPersonality);
+
+                    } else {//更新
+
+                        if (new JSONObject(result).getJSONObject(JsonField.DATA).getInt(
+                                JsonField.HASHCODE) == resPersonality.getHashCode())
+                            return;
+
+                        resPersonality.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
+                        resPersonality.setContent(result);
+                        resPersonality.setCreateTime(System.currentTimeMillis());
+
+                        db.saveOrUpdate(resPersonality);
+                    }
+                } catch (DbException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 

@@ -2,10 +2,7 @@ package com.seven.manager.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,10 +25,9 @@ import com.baidu.mapapi.search.poi.PoiSearch;
 import com.seven.library.base.BaseTitleActivity;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.library.task.ActivityStack;
-import com.seven.library.utils.LogUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.manager.R;
-import com.seven.manager.model.http.OrderModel;
+import com.seven.manager.model.order.OrderModel;
 
 import java.io.Serializable;
 
@@ -120,16 +116,28 @@ public class MapActivity extends BaseTitleActivity implements OnGetPoiSearchResu
         mInfoLayout = getView(mInfoLayout, R.id.map_info_rl);
         mLine = getView(mLine, R.id.map_line);
 
-        int w = View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
-        int h = View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
-        mInfoLayout.measure(w, h);
-        int height =mInfoLayout.getMeasuredHeight();
+//        setLineParams();
+    }
 
-        RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) mLine.getLayoutParams();
-        params.height=height;
-        mLine.setLayoutParams(params);
+    /**
+     * 重新定位line的高度
+     */
+    private void setLineParams() {
+
+        ViewTreeObserver vto2 = mInfoLayout.getViewTreeObserver();
+        vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+//                mInfoLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mLine.getLayoutParams();
+                params.height = mInfoLayout.getHeight();
+                mLine.setLayoutParams(params);
+            }
+        });
+
 
     }
+
 
     @Override
     public void initData(Intent intent) {
@@ -144,7 +152,7 @@ public class MapActivity extends BaseTitleActivity implements OnGetPoiSearchResu
         if (model != null) {
             mName.setText(model.getOwnerName());
             mArea.setText(model.getArea() + "m²");
-            mAddress.setText(model.getAddress());
+            mAddress.setText(model.getHouseNumber());
         }
 
         mBaiduMap = mMapView.getMap();
@@ -210,12 +218,12 @@ public class MapActivity extends BaseTitleActivity implements OnGetPoiSearchResu
      */
     private void retrieval() {
 
-        if (model == null)
+        if (model == null || model.getHouse() == null)
             return;
 
         mOption = new PoiCitySearchOption()
                 .city(ResourceUtils.getInstance().getText(R.string.city))
-                .keyword(model.getAddress());
+                .keyword(model.getHouse());
         mPoiSearch.searchInCity(mOption);
     }
 
@@ -273,10 +281,16 @@ public class MapActivity extends BaseTitleActivity implements OnGetPoiSearchResu
 
         // 显示InfoWindow
         mBaiduMap.showInfoWindow(infoWindow);
+
+        setLineParams();
+
     }
 
     @Override
     public void onGetPoiResult(PoiResult poiResult) {
+
+        if (poiResult.getAllPoi() == null)
+            return;
 
         mLocation.setText(poiResult.getAllPoi().get(0).address);
 

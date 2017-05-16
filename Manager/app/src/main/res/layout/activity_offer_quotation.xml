@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/impression">
+
+    <com.seven.library.view.AutoLoadRecyclerView
+        android:id="@+id/offer_quotation_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/offer_quotation_bottom"
+        android:layout_margin="@dimen/padding_max" />
+
+    <LinearLayout
+        android:id="@+id/offer_quotation_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_max"
+        android:paddingRight="@dimen/padding_max">
+
+        <RelativeLayout
+            android:id="@+id/offer_quotation_compile"
+            android:layout_width="@dimen/width_min"
+            android:layout_height="@dimen/height_min"
+            android:onClick="btClick">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_cir_gray_border" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/compile"
+                android:textColor="@color/black_30"
+                android:textSize="@dimen/text_main" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/offer_quotation_send"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_min"
+            android:layout_marginLeft="5dp"
+            android:onClick="btClick">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_cir" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_main" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
