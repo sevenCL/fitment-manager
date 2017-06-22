@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:paddingLeft="@dimen/padding_max"
+        android:paddingRight="@dimen/padding_max">
+
+        <RelativeLayout
+            android:id="@+id/shopping_remove_btn"
+            android:layout_width="@dimen/title"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/remove" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/shopping_volume_rl"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/padding_max_2m"
+            android:layout_toLeftOf="@+id/shopping_remove_btn">
+
+            <TextView
+                android:id="@+id/shopping_volume_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_60"
+                android:textSize="@dimen/input_front"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/shopping_point_iv"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padding_max_2m"
+            android:src="@drawable/cir_gray_point" />
+
+        <TextView
+            android:id="@+id/shopping_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/shopping_volume_rl"
+            android:layout_toRightOf="@+id/shopping_point_iv"
+            android:textColor="@color/gray_60"
+            android:textSize="@dimen/input_front"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

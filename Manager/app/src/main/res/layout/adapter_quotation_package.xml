@@ -120,12 +120,13 @@
             android:textColor="@color/gray_70"/>
 
         <TextView
-            android:id="@+id/quotation_package_area"
+            android:id="@+id/offer_quotation_package_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:textSize="@dimen/input_front"
-            android:textColor="@color/gray_70"/>
+            android:textColor="@color/gray_70"
+            android:visibility="gone"/>
 
         <com.seven.library.view.DashedLineView
             android:layout_width="match_parent"
@@ -142,7 +143,7 @@
             android:textColor="@color/gray_60"/>
 
         <TextView
-            android:id="@+id/offer_quotation_package_money"
+            android:id="@+id/quotation_package_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

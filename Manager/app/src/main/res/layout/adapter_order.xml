@@ -28,25 +28,36 @@
         android:paddingLeft="@dimen/padding_max"
         android:paddingRight="@dimen/padding_max">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/order_name_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:src="@drawable/xingming" />
 
             <TextView
                 android:id="@+id/order_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/order_name_iv"
                 android:textColor="@color/black_30"
                 android:textSize="@dimen/text_main" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/order_phone_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/dadianhua"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,7 +163,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_cir_gray_border" />
+                    android:background="@drawable/btn_cir_select" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -269,9 +280,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="right"
             android:orientation="horizontal"
             android:padding="@dimen/padding_max"
-            android:gravity="right">
+            android:visibility="gone">
 
             <RelativeLayout
                 android:id="@+id/order_offer_see_btn"
@@ -281,7 +293,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_cir_border" />
+                    android:background="@drawable/btn_cir_select" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -333,9 +345,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="right"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_max"
-            android:gravity="right">
+            android:padding="@dimen/padding_max">
 
             <RelativeLayout
                 android:id="@+id/order_date_modify_btn"
@@ -345,7 +357,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_cir_border" />
+                    android:background="@drawable/btn_cir_select" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -417,9 +429,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="right"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_max"
-            android:gravity="right">
+            android:padding="@dimen/padding_max">
 
             <RelativeLayout
                 android:id="@+id/order_delete_btn"

@@ -2,6 +2,8 @@ package com.seven.manager.ui.fragment.tab;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,7 +35,9 @@ import com.seven.manager.db.DbOrderList;
 import com.seven.manager.model.order.OrderModel;
 import com.seven.manager.ui.activity.HomeActivity;
 import com.seven.manager.ui.activity.MapActivity;
+import com.seven.manager.ui.activity.newoffer.OfferSpaceActivity;
 import com.seven.manager.ui.activity.offer.OfferActivity;
+import com.seven.manager.ui.activity.offer.OfferQuotationActivity;
 import com.seven.manager.ui.dialog.CommonDialog;
 
 import org.json.JSONException;
@@ -128,7 +132,7 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
         switch (task.getWhat()) {
 
-            case RunTimeConfig.ActionWhatConfig.QUOTATION_ORDER:
+            case RunTimeConfig.ActionWhatConfig.OFFER_ORDER:
 
                 onRefresh();
 
@@ -385,6 +389,23 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
                 break;
 
+            //电话
+            case R.id.order_phone_iv:
+
+                try {
+
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mDataList.get(position).getOwnerPhone()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                } catch (Exception e) {
+
+                    LogUtils.println(this.getClass().getName() + e);
+
+                }
+
+                break;
+
             //地图
             case R.id.order_location_iv:
 
@@ -395,9 +416,19 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
             //报价
             case R.id.order_offer_btn:
 
-                OfferActivity.start(false, mDataList.get(position));
+//                OfferActivity.start(false, mDataList.get(position));
+
+                OfferSpaceActivity.start(false, mDataList.get(position));
 
                 break;
+
+            //查看报价
+            case R.id.order_offer_see_btn:
+
+                OfferQuotationActivity.start(false, mDataList.get(position), RunTimeConfig.FlowConfig.OFFER_IS_COMPILE_NOT);
+
+                break;
+
 
         }
 

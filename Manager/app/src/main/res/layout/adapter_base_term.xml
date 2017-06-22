@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/base_term_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:paddingBottom="@dimen/padding_max_2m"
+        android:paddingLeft="@dimen/padding_max"
+        android:paddingRight="@dimen/padding_max"
+        android:paddingTop="@dimen/padding_max_2m">
+
+        <TextView
+            android:id="@+id/base_term_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/term_text"
+            android:textSize="@dimen/input_front" />
+
+    </RelativeLayout>
+
+</LinearLayout>

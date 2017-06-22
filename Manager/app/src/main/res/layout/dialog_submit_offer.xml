@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/padding_max"
+        android:layout_marginRight="@dimen/padding_max"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:paddingLeft="@dimen/padding_max"
+            android:paddingRight="@dimen/padding_max">
+
+            <ImageView
+                android:id="@+id/submit_total_iv"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_max_2m"
+                android:src="@drawable/cir_gray_point" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/submit_total_iv"
+                android:text="基础报价金额"
+                android:textColor="@color/gray_60"
+                android:textSize="@dimen/input_front" />
+
+            <TextView
+                android:id="@+id/submit_total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_30"
+                android:textSize="@dimen/input_front" />
+
+            <com.seven.library.view.DashedLineView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:paddingLeft="@dimen/padding_max"
+            android:paddingRight="@dimen/padding_max">
+
+            <ImageView
+                android:id="@+id/submit_reward_iv"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_max_2m"
+                android:src="@drawable/cir_gray_point" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/submit_reward_iv"
+                android:text="奖励金"
+                android:textColor="@color/gray_60"
+                android:textSize="@dimen/input_front" />
+
+            <TextView
+                android:id="@+id/submit_reward_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_30"
+                android:textSize="@dimen/input_front" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingLeft="@dimen/padding_max"
+            android:paddingRight="@dimen/padding_max"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="报价总额"
+                android:textSize="@dimen/input_front"
+                android:textColor="@color/gray_60"
+                android:layout_gravity="right"/>
+
+            <TextView
+                android:id="@+id/submit_amount_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_max"
+                android:textColor="@color/offer_text"
+                android:layout_gravity="right"
+                android:layout_marginTop="3dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="13dp"
+            android:background="@color/border_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/submit_cancel_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/border_line" />
+
+            <RelativeLayout
+                android:id="@+id/submit_sure_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sure"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

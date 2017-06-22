@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Manager</string>
+    <string name="app_name">秀图</string>
     <string name="city">成都</string>
 
     <string name="register">注册</string>
     <string name="password_forget">忘记密码</string>
     <string name="home">主页</string>
     <string name="map_location">工地位置</string>
-    <string name="offer_compile">编辑报价</string>
+    <string name="offer">报价</string>
     <string name="offer_personality_add">添加施工项</string>
     <string name="offer_see">查看报价</string>
 
@@ -75,23 +75,24 @@
     <string name="dialog_refuse">确认拒绝预约？</string>
     <string name="dialog_accept">确认接受预约？</string>
     <string name="dialog_quotation">确认保存报价？</string>
+    <string name="dialog_term_hint">请填写施工项目方量</string>
 
     <!-- offer -->
-    <string name="offer_package">399套餐</string>
+    <string name="offer_package">房间信息</string>
     <string name="offer_personality">个性项</string>
     <string name="offer_date">工期</string>
     <string name="offer_save">保存报价</string>
 
-    <string name="offer_total_package" formatted="false">套餐总价：%s元</string>
+    <string name="offer_total_package" formatted="false">基础总价：%s元</string>
     <string name="offer_total_personality" formatted="false">个&#160;&#160;性&#160;&#160;项：%s元</string>
-    <string name="offer_total_date" formatted="false">工期：%s天</string>
+    <string name="offer_total_date">工&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;期：60天</string>
     <string name="offer_total_count" formatted="false">总计：%s元</string>
 
     <string name="offer_package_area">净空面积</string>
     <string name="offer_package_perimeter">周长</string>
     <string name="offer_package_perimeter_unit">m</string>
     <string name="offer_package_area_unit">m²</string>
-    <string name="offer_package_total_money">套餐总价</string>
+    <string name="offer_package_total_money">净空面积</string>
     <string name="offer_package_min_area" formatted="false">不满%sm²</string>
     <string name="offer_package_min_area_two" formatted="false">按%sm²计算</string>
     <string name="offer_package_total_area" formatted="false">总净空面积%sm²</string>
@@ -128,16 +129,34 @@
     <string name="offer_quotation_house">房间</string>
     <string name="offer_quotation_area">净空面积</string>
     <string name="offer_quotation_perimeter">周长</string>
-    <string name="offer_quotation_package_money">套餐总价</string>
+    <string name="offer_quotation_package_money">净空面积</string>
     <string name="offer_quotation_term">项目</string>
     <string name="offer_quotation_volume">方量</string>
     <string name="offer_quotation_price">价格</string>
     <string name="offer_quotation_personality_money">个性项总价</string>
     <string name="offer_quotation_date_area" formatted="false">房屋面积%sm²，标准工期60工作日</string>
 
+    <!-- new offer -->
+    <string name="offer_space_info">房屋信息：</string>
+    <string name="offer_space_area">净空面积：</string>
+    <string name="offer_space_default_value">暂无</string>
+    <string name="offer_space_hint_1">你正在为</string>
+    <string name="offer_space_hint_2">进行报价</string>
+    <string name="offer_space_hint_3">请立即添加房间</string>
+
+    <string name="offer_base_send">发送给业主</string>
+    <string name="offer_base_offer">基础价：</string>
+    <string name="offer_base_area">净面积：</string>
+    <string name="offer_base_reward">奖励金：</string>
+    <string name="offer_base_amount">总&#160;&#160;&#160;&#160;价：</string>
+
+    <string name="offer_add_term">添加项目</string>
+    <string name="offer_search">输入关键字搜索</string>
+
     <!-- toast -->
     <string name="toast_volume">请输入方量</string>
     <string name="toast_offer_save">请添加房间</string>
     <string name="toast_send">发送成功</string>
+    <string name="toast_data_failure">获取房间信息失败</string>
 
 </resources>

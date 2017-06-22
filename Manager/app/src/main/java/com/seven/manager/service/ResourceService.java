@@ -34,7 +34,6 @@ public class ResourceService extends Service implements HttpRequestCallBack {
 
     private DbManager db;
 
-    private ResCity resCity;
 
     private ResPersonality resPersonality;
 
@@ -51,7 +50,7 @@ public class ResourceService extends Service implements HttpRequestCallBack {
         db = x.getDb(LibApplication.daoConfig);
 
         try {
-            resCity = db.selector(ResCity.class).findFirst();
+            resPersonality = db.selector(ResPersonality.class).findFirst();
         } catch (DbException e) {
             e.printStackTrace();
         }
@@ -63,25 +62,11 @@ public class ResourceService extends Service implements HttpRequestCallBack {
 
         if (intent != null) {
 
-//            city();
-
             personality();
 
         }
 
         return START_STICKY;
-    }
-
-    /**
-     * 服务城市
-     */
-    private void city() {
-
-        int hashCode = 0;
-        if (resCity != null)
-            hashCode = resCity.getHashCode();
-
-        request(RunTimeConfig.RequestConfig.RES_CITY, Urls.RES_CITY, hashCode);
     }
 
     private void personality() {
@@ -109,7 +94,7 @@ public class ResourceService extends Service implements HttpRequestCallBack {
             if (activity != null)
                 RequestUtils.getInstance(url).resource(requestId, hashCode, this);
         } catch (NullPointerException e) {
-            LogUtils.println(this.getClass().getName()+e);
+            LogUtils.println(this.getClass().getName() + e);
         }
 
     }
@@ -118,58 +103,13 @@ public class ResourceService extends Service implements HttpRequestCallBack {
     public void onSucceed(String result, int requestId) {
 
         switch (requestId) {
-
-            //服务城市
-            case RunTimeConfig.RequestConfig.RES_CITY:
-
-                LogUtils.println(this.getClass().getName() + " onSucceed RES_CITY request " + result);
-
-                try {
-                    resCity = db.selector(ResCity.class).findFirst();
-
-                    if (resCity == null) {//第一次创建表并添加数据
-
-                        if (TextUtils.isEmpty(result))
-                            return;
-
-                        resCity = new ResCity();
-                        resCity.setId(1);
-//                        resCity.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
-                        resCity.setParams(Urls.RES_CITY);
-                        resCity.setContent(result);
-                        resCity.setCreateTime(System.currentTimeMillis());
-
-                        db.save(resCity);
-
-                    } else {//更新
-
-//                        try {
-//                            if (new JSONObject(result).getJSONObject(JsonField.DATA).getInt(
-//                                    JsonField.HASHCODE) == resCity.getHashCode())
-//                                return;
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-
-//                        resCity.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
-                        resCity.setContent(result);
-                        resCity.setCreateTime(System.currentTimeMillis());
-
-                        db.saveOrUpdate(resCity);
-                    }
-                } catch (DbException e) {
-                    e.printStackTrace();
-                }
-
-                break;
-
             case RunTimeConfig.RequestConfig.RES_PERSONALITY:
 
                 LogUtils.println(this.getClass().getName() + " onSucceed RES_PERSONALITY request " + result);
 
                 try {
 
-                    if (TextUtils.isEmpty(new JSONObject(result).getJSONObject(JsonField.DATA).toString()))
+                    if (TextUtils.isEmpty(new JSONObject(result).getJSONArray(JsonField.DATA).toString()))
                         return;
 
                     resPersonality = db.selector(ResPersonality.class).findFirst();
@@ -181,7 +121,7 @@ public class ResourceService extends Service implements HttpRequestCallBack {
 
                         resPersonality = new ResPersonality();
                         resPersonality.setId(1);
-                        resPersonality.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
+                        resPersonality.setHashCode(0);
                         resPersonality.setParams(Urls.RES_PERSONALITY);
                         resPersonality.setContent(result);
                         resPersonality.setCreateTime(System.currentTimeMillis());
@@ -190,11 +130,10 @@ public class ResourceService extends Service implements HttpRequestCallBack {
 
                     } else {//更新
 
-                        if (new JSONObject(result).getJSONObject(JsonField.DATA).getInt(
-                                JsonField.HASHCODE) == resPersonality.getHashCode())
+                        if (new JSONObject(result).getInt(JsonField.HASHCODE) == resPersonality.getHashCode())
                             return;
 
-                        resPersonality.setHashCode(JsonHelper.getInstance().jsonStringHash(result));
+                        resPersonality.setHashCode(0);
                         resPersonality.setContent(result);
                         resPersonality.setCreateTime(System.currentTimeMillis());
 

@@ -10,16 +10,6 @@ import java.io.Serializable;
 
 public class OrderModel implements Serializable {
 
-    /*
-            "area": 80,
-            "address": "保利百合花园",
-            "orderNumber": "YY11703280001",
-            "ownerName": "",
-            "startTime": 1490670072000,
-            "endTime": 1493111041023,
-            "status": -1
-    * */
-
     //预约单号
     private String orderNumber;
 
@@ -49,6 +39,17 @@ public class OrderModel implements Serializable {
 
     //项目id
     private long projectId;
+
+    //电话
+    private String ownerPhone;
+
+    public String getOwnerPhone() {
+        return ownerPhone;
+    }
+
+    public void setOwnerPhone(String ownerPhone) {
+        this.ownerPhone = ownerPhone;
+    }
 
     public long getProjectId() {
         return projectId;
@@ -143,6 +144,7 @@ public class OrderModel implements Serializable {
                 ", status=" + status +
                 ", ownerId=" + ownerId +
                 ", projectId=" + projectId +
+                ", ownerPhone='" + ownerPhone + '\'' +
                 '}';
     }
 }

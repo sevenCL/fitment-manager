@@ -15,7 +15,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="厅"
             android:textColor="@color/black_30"
             android:textSize="@dimen/input_back" />
     </RelativeLayout>
@@ -23,8 +22,6 @@
     <com.seven.library.view.AutoLoadRecyclerView
         android:id="@+id/house_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

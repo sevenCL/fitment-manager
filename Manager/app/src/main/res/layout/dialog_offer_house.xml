@@ -7,8 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/padding_max_2x"
-        android:layout_marginRight="@dimen/padding_max_2x"
+        android:layout_marginLeft="@dimen/padding_max"
+        android:layout_marginRight="@dimen/padding_max"
         android:background="@drawable/dialog_bg"
         android:orientation="vertical">
 

@@ -53,9 +53,9 @@
     <string name="msg_intent_login">跳转登录界面失败</string>
 
     <!-- order -->
-    <string name="end_time" formatted="false">该预约将于%s失效，请尽快接受预约或拒绝预约。接受预约后，需上门提供量房报价。</string>
+    <string name="end_time" formatted="false">请尽快接受或拒绝预约。接受预约后，需上门提供量房报价。</string>
     <string name="order_cancel">你已申请取消预约，请等待平台审核结果。</string>
-    <string name="order_offer_start" formatted="false">预约已接受，请联系业主预约上门量房报价。请在%s之前完成首次报价，否则将扣除保证金。</string>
+    <string name="order_offer_start" formatted="false">预约已接受，请主动联系业主上门量房报价。</string>
     <string name="order_offer_over">报价已完成，请等待客户接受报价。</string>
     <string name="order_project_start" formatted="false">业主已接受合同并付款。业主指定开工日期为：%s请立即开始组队。</string>
     <string name="order_invalid">预约已失效，请点击删除。</string>

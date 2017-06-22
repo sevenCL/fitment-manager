@@ -114,7 +114,7 @@ public class PasswordDialog extends BaseActivity implements HttpRequestCallBack 
             //点击蒙层区域dismiss=finish
             case R.id.password_touch_rl:
 
-                finish();
+//                finish();
 
                 break;
 
@@ -124,6 +124,15 @@ public class PasswordDialog extends BaseActivity implements HttpRequestCallBack 
                 submit();
 
                 break;
+
+
+            //关闭
+            case R.id.password_colse_iv:
+
+                finish();
+
+                break;
+
         }
 
     }

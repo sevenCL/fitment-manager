@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/padding_max"
+        android:layout_marginRight="@dimen/padding_max"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:paddingLeft="@dimen/padding_max"
+            android:paddingRight="@dimen/padding_max">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已添加的施工项目"
+                android:textColor="@color/black_30"
+                android:textSize="@dimen/text_main"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/line"/>
+
+        </RelativeLayout>
+        
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/shopping_cart_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="13dp"
+            android:background="@color/border_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/shopping_cart_cancel_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/border_line" />
+
+            <RelativeLayout
+                android:id="@+id/shopping_cart_sure_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sure"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

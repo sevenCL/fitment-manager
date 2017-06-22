@@ -8,24 +8,10 @@
 
     <ImageView
         android:id="@+id/splash_iv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/icon_splash_bg" />
-
-
-    <!--<ImageView-->
-    <!--android:layout_marginTop="120dp"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="170dp"-->
-    <!--android:src="@drawable/icon_splash_logo"/>-->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="loading" />
+        android:src="@drawable/loading" />
 
     <Button
         android:id="@+id/splash_test_btn"
@@ -33,7 +19,8 @@
         android:layout_height="wrap_content"
         android:onClick="btClick"
         android:text="test"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/splash_dev_btn"
@@ -42,5 +29,6 @@
         android:layout_alignParentRight="true"
         android:onClick="btClick"
         android:text="dev"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
 </RelativeLayout>

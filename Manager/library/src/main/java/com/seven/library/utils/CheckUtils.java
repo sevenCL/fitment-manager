@@ -1,5 +1,11 @@
 package com.seven.library.utils;
 
+import android.text.TextUtils;
+
+import org.apache.commons.jexl3.JexlBuilder;
+import org.apache.commons.jexl3.JexlEngine;
+import org.apache.commons.jexl3.JexlExpression;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,6 +72,26 @@ public class CheckUtils {
         String reg1 = "[0-9]{15}";
         String regex = "[0-9]{18}";
         return str.matches(regx) || str.matches(reg1) || str.matches(regex);
+    }
+
+    /**
+     *
+     * @param area
+     * @param formula
+     * @return
+     */
+    public double formula(double area, String formula) {
+
+        if (TextUtils.isEmpty(formula))
+            return 0;
+
+        String newFormula = formula.replace("S", String.valueOf(area)).replace("C", "0").replace("H", "1");
+
+        JexlEngine jexlEngine = new JexlBuilder().create();
+        JexlExpression jexlExpression = jexlEngine.createExpression(newFormula);
+        Object evaluate = jexlExpression.evaluate(null);
+
+        return Double.parseDouble(evaluate.toString());
     }
 
 }

@@ -12,6 +12,7 @@ import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.manager.R;
+import com.seven.manager.model.newoffer.HouseModel;
 import com.seven.manager.model.offer.OfferHouseModel;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class OfferHouseContentAdapter extends RecyclerView.Adapter<OfferHouseCon
 
     private Context mContext;
 
-    private List<OfferHouseModel> mList;
+    private List<HouseModel> mList;
 
     private int mParentPosition;
 
@@ -34,7 +35,7 @@ public class OfferHouseContentAdapter extends RecyclerView.Adapter<OfferHouseCon
 
     private LayoutInflater mInflater;
 
-    public OfferHouseContentAdapter(Context context, List<OfferHouseModel> list, int position, ListItemCallBack callBack) {
+    public OfferHouseContentAdapter(Context context, List<HouseModel> list, int position, ListItemCallBack callBack) {
 
         this.mContext = context;
         this.mList = list;

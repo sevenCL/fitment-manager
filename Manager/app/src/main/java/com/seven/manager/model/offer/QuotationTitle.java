@@ -35,7 +35,7 @@ public class QuotationTitle extends OfferQuotationModel {
     private double area;
 
     //厅
-    private int halls;
+    private int halles;
 
     //室
     private int rooms;
@@ -115,12 +115,12 @@ public class QuotationTitle extends OfferQuotationModel {
         this.area = area;
     }
 
-    public int getHalls() {
-        return halls;
+    public int getHalles() {
+        return halles;
     }
 
-    public void setHalls(int halls) {
-        this.halls = halls;
+    public void setHalles(int halles) {
+        this.halles = halles;
     }
 
     public int getRooms() {
@@ -212,7 +212,7 @@ public class QuotationTitle extends OfferQuotationModel {
                 ", houseNumber='" + houseNumber + '\'' +
                 ", totalAmount=" + totalAmount +
                 ", area=" + area +
-                ", halls=" + halls +
+                ", halles=" + halles +
                 ", rooms=" + rooms +
                 ", cookhouse=" + cookhouse +
                 ", washroom=" + washroom +

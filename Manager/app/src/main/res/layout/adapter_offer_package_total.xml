@@ -28,12 +28,13 @@
             android:textSize="@dimen/text_min" />
 
         <TextView
-            android:id="@+id/package_total_area"
+            android:id="@+id/offer_total_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:textColor="@color/gray_60"
-            android:textSize="@dimen/text_min" />
+            android:textSize="@dimen/text_min"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:id="@+id/package_total_min_area_ll"
@@ -74,11 +75,10 @@
             android:textSize="@dimen/text_min" />
 
         <TextView
-            android:id="@+id/offer_total_money"
+            android:id="@+id/package_total_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="5555.00"
             android:textColor="@color/offer_text"
             android:textSize="27sp" />
 

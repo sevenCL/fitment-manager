@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/padding_max"
+        android:background="@drawable/dialog_bg">
+
+        <RelativeLayout
+            android:id="@+id/term_volume_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_main"
+                android:textColor="@color/black_30"
+                android:text="@string/dialog_term_hint"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_max"/>
+
+            <TextView
+                android:id="@+id/term_volume_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/input_front"
+                android:textColor="@color/gray_60"
+                android:text="@string/dialog_term_hint"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_max"
+                android:layout_alignParentRight="true"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/term_volume_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/term_volume_iv"
+            android:layout_below="@+id/term_volume_title"/>
+
+        <ImageView
+            android:id="@+id/term_volume_iv"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_above="@+id/term_volume_bottom"
+            android:layout_marginTop="13dp"
+            android:background="@color/border_line" />
+
+        <LinearLayout
+            android:id="@+id/term_volume_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/term_volume_cancel_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/border_line" />
+
+            <RelativeLayout
+                android:id="@+id/term_volume_sure_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sure"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

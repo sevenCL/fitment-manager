@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="200dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_max"
+        android:paddingLeft="@dimen/padding_max"
+        android:paddingRight="@dimen/padding_max">
+
+        <com.seven.library.view.DashedLineView
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_max">
+
+            <TextView
+                android:id="@+id/volume_unit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/gray_60"
+                android:textSize="@dimen/input_front" />
+
+            <TextView
+                android:id="@+id/volume_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/volume_unit_tv"
+                android:textColor="@color/offer_text"
+                android:textSize="@dimen/input_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/volume_tv"
+                android:text="总方量："
+                android:textColor="@color/gray_60"
+                android:textSize="@dimen/input_front" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

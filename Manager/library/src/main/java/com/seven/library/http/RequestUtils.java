@@ -529,7 +529,7 @@ public class RequestUtils {
      * @param planId
      * @param projectId
      * @param area
-     * @param halls
+     * @param halles
      * @param rooms
      * @param cookhouse
      * @param washroom
@@ -541,7 +541,7 @@ public class RequestUtils {
      * @param callBack
      */
     public void sendQuotation(int requestId, long branchId, long ownerId, long planId, long projectId,
-                              double area, int halls, int rooms, int cookhouse, int washroom, int balcony,
+                              double area, int halles, int rooms, int cookhouse, int washroom, int balcony,
                               int others, String itemsListJson, String addItemsListJson, int hashCode, HttpRequestCallBack callBack) {
 
         showDialog();
@@ -552,7 +552,7 @@ public class RequestUtils {
         params.addBodyParameter("planId", String.valueOf(planId));
         params.addBodyParameter("projectId", String.valueOf(projectId));
         params.addBodyParameter("area", String.valueOf(area));
-        params.addBodyParameter("halls", String.valueOf(halls));
+        params.addBodyParameter("halles", String.valueOf(halles));
         params.addBodyParameter("rooms", String.valueOf(rooms));
         params.addBodyParameter("cookhouse", String.valueOf(cookhouse));
         params.addBodyParameter("washroom", String.valueOf(washroom));
@@ -560,6 +560,43 @@ public class RequestUtils {
         params.addBodyParameter("others", String.valueOf(others));
         params.addBodyParameter("itemsListJson", itemsListJson);
         params.addBodyParameter("addItemsListJson", addItemsListJson);
+        params.addBodyParameter("hashCode", String.valueOf(hashCode));
+
+        post(params, requestId, callBack);
+
+    }
+
+    /**
+     * 获取奖励金信息
+     *
+     * @param requestId
+     * @param number
+     * @param hashCode
+     * @param callBack
+     */
+    public void getReward(int requestId, String number, int hashCode, HttpRequestCallBack callBack) {
+
+        RequestParams params = new RequestParams(uri);
+        params.addBodyParameter("number", number);
+        params.addBodyParameter("hashCode", String.valueOf(hashCode));
+
+        post(params, requestId, callBack);
+    }
+
+    /**
+     * 保存报价
+     *
+     * @param requestId
+     * @param orderJsonData
+     * @param hashCode
+     * @param callBack
+     */
+    public void offerSave(int requestId, String orderJsonData, int hashCode, HttpRequestCallBack callBack) {
+
+        showDialog();
+
+        RequestParams params = new RequestParams(uri);
+        params.addBodyParameter("orderJsonData", orderJsonData);
         params.addBodyParameter("hashCode", String.valueOf(hashCode));
 
         post(params, requestId, callBack);

@@ -26,7 +26,7 @@ public class QuotationModel implements Serializable {
     private double area;
 
     //厅、室、厨房、卫生间、阳台、其他
-    private int halls;
+    private int halles;
     private int rooms;
     private int cookhouse;
     private int washroom;
@@ -82,12 +82,12 @@ public class QuotationModel implements Serializable {
         this.area = area;
     }
 
-    public int getHalls() {
-        return halls;
+    public int getHalles() {
+        return halles;
     }
 
-    public void setHalls(int halls) {
-        this.halls = halls;
+    public void setHalles(int halles) {
+        this.halles = halles;
     }
 
     public int getRooms() {
@@ -162,7 +162,7 @@ public class QuotationModel implements Serializable {
                 ", planId=" + planId +
                 ", projectId=" + projectId +
                 ", area=" + area +
-                ", halls=" + halls +
+                ", halles=" + halles +
                 ", rooms=" + rooms +
                 ", cookhouse=" + cookhouse +
                 ", washroom=" + washroom +
@@ -173,4 +173,5 @@ public class QuotationModel implements Serializable {
                 ", hashCode=" + hashCode +
                 '}';
     }
+
 }

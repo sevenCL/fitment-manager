@@ -218,10 +218,9 @@ public class OfferPackageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         holder.mHouseInfo.setText(total.getHouseInfo());
 
-        holder.mTotalArea.setText(ResourceUtils.getInstance().getFormatText(
-                R.string.offer_package_total_area, new DecimalFormat("#0.00").format(total.getTotalArea())));
+        holder.mTotalArea.setText(new DecimalFormat("#0.00").format(total.getTotalArea()));
 
-        holder.mMinLayout.setVisibility(total.getTotalArea() < total.getMinArea() ? View.VISIBLE : View.GONE);
+//        holder.mMinLayout.setVisibility(total.getTotalArea() < total.getMinArea() ? View.VISIBLE : View.GONE);
 
         holder.mMinArea.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_package_min_area, total.getMinArea()));
         holder.mMinAreaTwo.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_package_min_area_two, total.getMinArea()));
@@ -252,10 +251,9 @@ public class OfferPackageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         total.setTotalArea(totalArea);
         total.setTotalMoney(totalMoney);
 
-        packageTotal.mTotalArea.setText(ResourceUtils.getInstance().getFormatText(
-                R.string.offer_package_total_area, new DecimalFormat("#0.00").format(total.getTotalArea())));
+        packageTotal.mTotalArea.setText(new DecimalFormat("#0.00").format(total.getTotalArea()));
 
-        packageTotal.mMinArea.setVisibility(total.getTotalArea() < total.getMinArea() ? View.VISIBLE : View.GONE);
+//        packageTotal.mMinLayout.setVisibility(total.getTotalArea() < total.getMinArea() ? View.VISIBLE : View.GONE);
 
         packageTotal.mTotalMoney.setText(new DecimalFormat("#0.00").format(total.getTotalMoney()));
 

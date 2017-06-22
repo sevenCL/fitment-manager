@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/space_bottom_rl"
+        android:background="@color/white">
+
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/space_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/space_null_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@color/impression">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hint" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_max"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offer_space_hint_1"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/input_front" />
+
+                <TextView
+                    android:id="@+id/space_address_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/input_front" />
+
+                <TextView
+                    android:id="@+id/space_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/input_front" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="@string/offer_space_hint_2"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/input_front" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/offer_space_hint_3"
+                android:textColor="@color/gray_70"
+                android:textSize="@dimen/input_front" />
+
+            <RelativeLayout
+                android:id="@+id/space_add_btn"
+                android:layout_width="213dp"
+                android:layout_height="@dimen/height_min"
+                android:layout_marginTop="@dimen/padding_max_2x"
+                android:onClick="btClick">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_cir_gray_border" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/offer_add_house"
+                    android:textColor="@color/black_30"
+                    android:textSize="@dimen/text_main" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/space_bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/space_next_btn"
+            android:layout_width="119dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_primary"
+            android:onClick="btClick">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                android:textSize="@dimen/input_back" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/space_next_btn"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offer_space_info"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/text_min" />
+
+                <TextView
+                    android:id="@+id/space_info_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offer_space_default_value"
+                    android:textColor="@color/offer_text"
+                    android:textSize="@dimen/text_min" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offer_space_area"
+                    android:textColor="@color/gray_70"
+                    android:textSize="@dimen/text_min" />
+
+                <TextView
+                    android:id="@+id/space_area_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offer_space_default_value"
+                    android:textColor="@color/offer_text"
+                    android:textSize="@dimen/text_min" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

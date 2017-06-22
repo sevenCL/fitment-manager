@@ -99,24 +99,42 @@ public class PersonalityFragment extends BaseFragment implements ListItemCallBac
                 if (houseModel == null || termModel == null)
                     return;
 
+                boolean isAdd = true;
+
+                for (OfferPersonalityModel model : mDataList) {
+
+                    if (model.getViewType() == RunTimeConfig.ModelConfig.OFFER_PERSONALITY_ITEM) {
+
+                        if (((PersonalityItem) model).getSpaceId() == houseModel.getId() && ((PersonalityItem) model).getTermId() == termModel.getId()) {
+                            ((PersonalityItem) model).setVolume(((PersonalityItem) model).getVolume() + termModel.getVolume());
+                            double smallTotal = ((PersonalityItem) model).getSmallTotal() + (termModel.getOffer() * termModel.getVolume());
+                            ((PersonalityItem) model).setSmallTotal(smallTotal);
+                            isAdd = false;
+                        }
+                    }
+
+                }
+
                 if (mDataList.size() > 0 && mDataList.get(mDataList.size() - 1).getViewType() == RunTimeConfig.ModelConfig.OFFER_PERSONALITY_TOTAL)
                     mDataList.remove(mDataList.size() - 1);
 
-                PersonalityItem item = new PersonalityItem();
+                if (isAdd) {
+                    PersonalityItem item = new PersonalityItem();
 
-                item.setSpaceId(houseModel.getId());
-                item.setSpace(houseModel.getName());
-                item.setTermId(termModel.getId());
-                item.setTerm(termModel.getName());
-                item.setVolume(termModel.getVolume());
-                item.setPrice(termModel.getOffer());
-                item.setUnit(termModel.getUnitName());
+                    item.setSpaceId(houseModel.getId());
+                    item.setSpace(houseModel.getName());
+                    item.setTermId(termModel.getId());
+                    item.setTerm(termModel.getName());
+                    item.setVolume(termModel.getVolume());
+                    item.setPrice(termModel.getOffer());
+                    item.setUnit(termModel.getUnitName());
 
-                double smallTotal = termModel.getOffer() * termModel.getVolume();
+                    double smallTotal = termModel.getOffer() * termModel.getVolume();
 
-                item.setSmallTotal(smallTotal);
+                    item.setSmallTotal(smallTotal);
 
-                mDataList.add(item);
+                    mDataList.add(item);
+                }
 
                 getData();
 

@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/offer_quotation_bottom"
-        android:layout_margin="@dimen/padding_max" />
+        android:layout_marginLeft="@dimen/padding_max"
+        android:layout_marginRight="@dimen/padding_max"/>
 
     <LinearLayout
         android:id="@+id/offer_quotation_bottom"

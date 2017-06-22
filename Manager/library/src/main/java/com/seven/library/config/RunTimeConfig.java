@@ -144,6 +144,11 @@ public class RunTimeConfig {
         public static final String FINISH = "isFinish";
 
         /**
+         * 项目id
+         */
+        public static final String PROJECTID = "projectId";
+
+        /**
          * 数据模型
          */
         public static final String SERIALIZABLE = "Serializable";
@@ -153,6 +158,21 @@ public class RunTimeConfig {
          */
         public static final String TERM = "term";
 
+        /**
+         * 奖励金模型
+         */
+        public static final String REWARD = "reward";
+
+        /**
+         * 空间信息
+         */
+        public static final String SPACE_LIST = "spaceList";
+
+
+        /**
+         * 空间模型
+         */
+        public static final String HOUSE_MODEL = "houseModel";
 
         /**
          * 注册、忘记密码流程 @link FlowConfig
@@ -193,6 +213,11 @@ public class RunTimeConfig {
          * 机构关联状态
          */
         public static final String COMPANY_STATUS = "companyStatus";
+
+        /**
+         * 报价是否可编辑
+         */
+        public static final String OFFER_IS_COMPILE = "isCompile";
 
     }
 
@@ -339,6 +364,16 @@ public class RunTimeConfig {
          */
         public static final int OFFER_QUOTATION = 1203;
 
+        /**
+         * 奖励金信息
+         */
+        public static final int OFFER_REWARD = 1204;
+
+        /**
+         * 保存报价
+         */
+        public static final int OFFER_SAVE = 1205;
+
         //=================================================== 资源包
 
         /**
@@ -418,7 +453,15 @@ public class RunTimeConfig {
         //--------REFRESH
         public static final int USER_STATUS = 100;
 
-        public static final int QUOTATION_ORDER= 101;
+        /**
+         * 刷新订单
+         */
+        public static final int QUOTATION_ORDER = 101;
+
+        /**
+         * 刷新订单
+         */
+        public static final int OFFER_ORDER = 102;
 
         //--------OFFER
 
@@ -502,6 +545,16 @@ public class RunTimeConfig {
          */
         public static final int RESET_MOBILE = 3;
 
+        /**
+         * 报价是否可编辑 是
+         */
+        public static final int OFFER_IS_COMPILE = 0;
+
+        /**
+         * 报价是否可编辑 否
+         */
+        public static final int OFFER_IS_COMPILE_NOT = 1;
+
     }
 
     /**
@@ -550,14 +603,14 @@ public class RunTimeConfig {
         //----------------------- order status
 
         /**
-         * 1新预约、-1已取消、2待报价、3已报价、4待开工、5已失效
+         * 1新预约、2已取消、3待报价、4已报价、4待开工、5已失效
          */
         public static final int ORDER_STATUS_NEW = 1;
-        public static final int ORDER_STATUS_CANCEL = -1;
-        public static final int ORDER_STATUS_OFFER = 2;
-        public static final int ORDER_STATUS_OFFER_OVER = 3;
-        public static final int ORDER_STATUS_START = 4;
-        public static final int ORDER_STATUS_INVALID = 5;
+        public static final int ORDER_STATUS_CANCEL = 2;
+        public static final int ORDER_STATUS_OFFER = 3;
+        public static final int ORDER_STATUS_OFFER_OVER = 4;
+        public static final int ORDER_STATUS_START = 100;
+        public static final int ORDER_STATUS_INVALID = 101;
 
         /**
          * 操作状态  -1拒绝  1接受
@@ -620,6 +673,19 @@ public class RunTimeConfig {
         public static final int QUOTATION_PERSONALITY = 2;
         public static final int QUOTATION_DATE = 3;
 
+        //------------------新报价 空间信息
+        public static final int SPACE_TITLE = 0;
+        public static final int SPACE_ITEM = 1;
+
+        //------------------新报价 基础项
+        public static final int BASE_TITLE = 0;
+        public static final int BASE_CONTROL = 1;
+        public static final int BASE_ITEM = 2;
+
+        //-------------------
+        public static final int TERM_VOLUME_TITLE = 0;
+        public static final int TERM_VOLUME_ITEM = 1;
+        public static final int TERM_VOLUME_TOTAL = 2;
     }
 
     /**
@@ -627,9 +693,9 @@ public class RunTimeConfig {
      */
     public static class HouseConfig {
 
-        //1厅  2室  3厨  4卫  5阳台 6其他
-        public static final int HALL = 1;
-        public static final int ROOM = 2;
+        //1室 2厅 3厨  4卫  5阳台 6其他
+        public static final int ROOM = 1;
+        public static final int HALL = 2;
         public static final int KITCHEN = 3;
         public static final int TOILET = 4;
         public static final int BALCONY = 5;

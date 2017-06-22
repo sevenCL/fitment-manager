@@ -219,7 +219,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
     @Override
     public void initData(Intent intent) {
 
-        setTitle(ResourceUtils.getInstance().getText(R.string.offer_compile));
+        setTitle(ResourceUtils.getInstance().getText(R.string.offer));
 
         setRightButtonBackground(R.drawable.tianjia);
 
@@ -361,7 +361,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
         RequestUtils.getInstance(Urls.OFFER_HOUSE).offerHouse(
                 RunTimeConfig.RequestConfig.OFFER_HOUSE, 1, 1, 1000, this);
 
-        // TODO: 2017/5/11 获取套餐信心 这里的套餐id写死 固定399
+        // TODO: 2017/5/11 获取套餐信息 这里的套餐id写死 固定399
 
         int hashCode = 0;
 
@@ -524,7 +524,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
         double area = 0;
         String houseInfo = "";
 
-        int halls = 0;
+        int halles = 0;
         int rooms = 0;
         int cookhouse = 0;
         int washroom = 0;
@@ -560,7 +560,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
                         personalityObject.put("planSpaceId", ((PersonalityItem) model).getSpaceId());
                         personalityObject.put("itemId", ((PersonalityItem) model).getTermId());
                         personalityObject.put("quantity", ((PersonalityItem) model).getVolume());
-                        personalityObject.put("name", ((PersonalityItem) model).getSpace());
+                        personalityObject.put("name", ((PersonalityItem) model).getTerm());
                         personalityObject.put("price", ((PersonalityItem) model).getSmallTotal());
                         personalityObject.put("unit", ((PersonalityItem) model).getUnit());
 
@@ -606,7 +606,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
                     switch (((PackageItem) model).getType()) {
 
                         case RunTimeConfig.HouseConfig.HALL:
-                            halls++;
+                            halles++;
                             break;
                         case RunTimeConfig.HouseConfig.ROOM:
                             rooms++;
@@ -638,7 +638,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
             data.put("houseNumber", mModel.getHouseNumber());
             data.put("totalAmount", totalAmount);
             data.put("area", area);
-            data.put("halls", halls);
+            data.put("halles", halles);
             data.put("rooms", rooms);
             data.put("cookhouse", cookhouse);
             data.put("washroom", washroom);
@@ -675,7 +675,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
             e.printStackTrace();
         }
 
-        OfferQuotationActivity.start(false, mModel);
+        OfferQuotationActivity.start(false, mModel,RunTimeConfig.FlowConfig.OFFER_IS_COMPILE);
 
     }
 /*

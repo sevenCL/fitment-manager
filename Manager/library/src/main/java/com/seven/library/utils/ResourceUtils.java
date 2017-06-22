@@ -198,14 +198,13 @@ public class ResourceUtils {
      * @param type
      * @return
      */
-    public String HouseType(int type) {
+    public String houseType(int type) {
 
         switch (type) {
-
-            case RunTimeConfig.HouseConfig.HALL:
-                return getText(R.string.house_hall);
             case RunTimeConfig.HouseConfig.ROOM:
                 return getText(R.string.house_room);
+            case RunTimeConfig.HouseConfig.HALL:
+                return getText(R.string.house_hall);
             case RunTimeConfig.HouseConfig.KITCHEN:
                 return getText(R.string.house_kitchen);
             case RunTimeConfig.HouseConfig.TOILET:

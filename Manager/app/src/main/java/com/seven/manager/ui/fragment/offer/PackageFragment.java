@@ -174,36 +174,36 @@ public class PackageFragment extends BaseFragment implements ListItemCallBack {
             if (activity == null)
                 return;
 
-            mHouseDialog = new OfferHouseDialog(activity, R.style.Dialog, mHouseList, new DialogClickCallBack() {
-                @Override
-                public void onCancelClick(View view) {
-
-                }
-
-                @Override
-                public void onSureClick(View view) {
-
-                }
-
-                @Override
-                public void onClick(View view, Object... object) {
-
-                    if (mDataList.size() > 0 && mDataList.get(mDataList.size() - 1).getViewType() == RunTimeConfig.ModelConfig.OFFER_PACKAGE_TOTAL)
-                        mDataList.remove(mDataList.size() - 1);
-
-                    PackageItem packageItem = null;
-
-                    for (OfferHouseModel model : (List<OfferHouseModel>) object[0]) {
-                        packageItem = new PackageItem();
-                        packageItem.setId(model.getId());
-                        packageItem.setType(model.getType());
-                        packageItem.setName(model.getName());
-                        packageItem.setSpaceId(model.getId());
-                        mDataList.add(packageItem);
-                    }
-                    getData();
-                }
-            });
+//            mHouseDialog = new OfferHouseDialog(activity, R.style.Dialog, mHouseList, new DialogClickCallBack() {
+//                @Override
+//                public void onCancelClick(View view) {
+//
+//                }
+//
+//                @Override
+//                public void onSureClick(View view) {
+//
+//                }
+//
+//                @Override
+//                public void onClick(View view, Object... object) {
+//
+//                    if (mDataList.size() > 0 && mDataList.get(mDataList.size() - 1).getViewType() == RunTimeConfig.ModelConfig.OFFER_PACKAGE_TOTAL)
+//                        mDataList.remove(mDataList.size() - 1);
+//
+//                    PackageItem packageItem = null;
+//
+//                    for (OfferHouseModel model : (List<OfferHouseModel>) object[0]) {
+//                        packageItem = new PackageItem();
+//                        packageItem.setId(model.getId());
+//                        packageItem.setType(model.getType());
+//                        packageItem.setName(model.getName());
+//                        packageItem.setSpaceId(model.getId());
+//                        mDataList.add(packageItem);
+//                    }
+//                    getData();
+//                }
+//            });
             mHouseDialog.show();
         }
     }

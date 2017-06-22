@@ -1,9 +1,11 @@
 package com.seven.manager.ui.activity.offer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -114,6 +116,7 @@ public class OfferPersonalityVolumeActivity extends BaseTitleActivity {
         mTerm.setText(termModel.getName() + "/" + termModel.getUnitName());
         mTermHint.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_personality_term_volume, termModel.getName()));
         mUnit.setText(termModel.getUnitName());
+
     }
 
     public void btClick(View view) {
@@ -132,7 +135,7 @@ public class OfferPersonalityVolumeActivity extends BaseTitleActivity {
                 termModel.setVolume(Double.parseDouble(mVolumeEt.getText().toString()));
 
                 doAction(RunTimeConfig.ActionConfig.OFFER, Task.PUBLIC, Task.MIN_AUTHORITY,
-                        RunTimeConfig.ActionWhatConfig.PERSONNALITY, houseModel,termModel);
+                        RunTimeConfig.ActionWhatConfig.PERSONNALITY, houseModel, termModel);
 
                 ActivityStack.getInstance().finishActivity(OfferPersonalityVolumeActivity.class);
                 ActivityStack.getInstance().finishActivity(OfferPersonalityTermActivity.class);

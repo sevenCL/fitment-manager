@@ -55,8 +55,6 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         this.mInflater = LayoutInflater.from(mContext);
 
-        mPackageList = new ArrayList<>();
-        mPersonalityList = new ArrayList<>();
     }
 
     @Override
@@ -188,8 +186,10 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         com.seven.manager.model.offer.QuotationPackage packages = (com.seven.manager.model.offer.QuotationPackage) mList.get(position);
 
         holder.houseInfo.setText(packages.getHouseInfo());
-        holder.area.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_package_total_area, packages.getArea()));
+        holder.area.setText(new DecimalFormat("#0.00").format(packages.getArea()));
         holder.money.setText(new DecimalFormat("#0.00").format(packages.getPackageMoney()));
+
+        mPackageList = new ArrayList<>();
 
         JsonHelper.getInstance().jsonArraySingle(packages.getItemsListJson(), QuotationPackageItem.class,
                 true, new JsonCallBack() {
@@ -244,6 +244,8 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         holder.count.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_personality_count, personality.getPersonalityCount()));
         holder.money.setText(new DecimalFormat("#0.00").format(personality.getPersonalityMoney()));
 
+        mPersonalityList = new ArrayList<>();
+
         JsonHelper.getInstance().jsonArraySingle(personality.getAddItemsListJson(), QuotationPersonalityItem.class,
                 true, new JsonCallBack() {
                     @Override
@@ -252,8 +254,21 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         if (data == null)
                             return;
 
-                        for (QuotationPersonalityItem item : (List<QuotationPersonalityItem>) data)
-                            mPersonalityList.add(item);
+                        for (QuotationPersonalityItem item : (List<QuotationPersonalityItem>) data) {
+
+                            boolean isAdd = true;
+
+                            for (QuotationPersonalityItem newItem : mPersonalityList) {
+
+                                if (item.getName().equals(newItem.getName()) && item.getPrice() / item.getQuantity() == newItem.getPrice() / newItem.getQuantity()) {
+                                    newItem.setQuantity(newItem.getQuantity() + item.getQuantity());
+                                    newItem.setPrice(newItem.getPrice() + item.getPrice());
+                                    isAdd = false;
+                                }
+                            }
+                            if (isAdd)
+                                mPersonalityList.add(item);
+                        }
 
                     }
 

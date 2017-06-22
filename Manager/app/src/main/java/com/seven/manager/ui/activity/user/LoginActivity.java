@@ -244,7 +244,7 @@ public class LoginActivity extends BaseActivity implements HttpRequestCallBack {
 
     @Override
     public void onFailure(String error, int requestId) {
-
+        LogUtils.println(this.getClass().getName() + " onFailure LOGIN request " + error);
     }
 
     @Override

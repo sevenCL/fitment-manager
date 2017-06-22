@@ -14,8 +14,8 @@ import com.seven.library.config.RunTimeConfig;
 import com.seven.library.view.AutoLoadRecyclerView;
 import com.seven.manager.R;
 import com.seven.manager.adapter.offer.OfferHouseAdapter;
+import com.seven.manager.model.newoffer.HouseModel;
 import com.seven.manager.model.offer.OfferHouse;
-import com.seven.manager.model.offer.OfferHouseModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +37,13 @@ public class OfferHouseDialog extends BaseDialog implements ListItemCallBack {
 
     private OfferHouseAdapter mAdapter;
 
-    private List<OfferHouseModel> mSelectList;
+    private List<HouseModel> mSelectList;
 
     public OfferHouseDialog(Activity activity, int theme, DialogClickCallBack dialogClickCallBack) {
         super(activity, theme, dialogClickCallBack);
     }
 
-    public OfferHouseDialog(Activity activity, int theme, List<OfferHouseModel> list, DialogClickCallBack dialogClickCallBack) {
+    public OfferHouseDialog(Activity activity, int theme, List<HouseModel> list, DialogClickCallBack dialogClickCallBack) {
         this(activity, theme, dialogClickCallBack);
 
         //1厅  2室  3厨  4卫  5阳台 6其他
@@ -52,14 +52,17 @@ public class OfferHouseDialog extends BaseDialog implements ListItemCallBack {
 
         OfferHouse offerHouse = new OfferHouse();
 
-        for (OfferHouseModel model : list) {
+        for (HouseModel model : list) {
 
-            if (offerHouse.getType() != model.getType()) {
-                offerHouse = new OfferHouse();
-                mDataList.add(offerHouse);
-                offerHouse.setType(model.getType());
+            if (model.getIsShow() == 1) {
+
+                if (offerHouse.getType() != model.getType()) {
+                    offerHouse = new OfferHouse();
+                    mDataList.add(offerHouse);
+                    offerHouse.setType(model.getType());
+                }
+                offerHouse.addList(model);
             }
-            offerHouse.addList(model);
         }
 
     }
@@ -111,7 +114,7 @@ public class OfferHouseDialog extends BaseDialog implements ListItemCallBack {
             case R.id.offer_house_sure_rl:
 
                 for (OfferHouse house : mDataList) {
-                    for (OfferHouseModel model : house.getList()) {
+                    for (HouseModel model : house.getList()) {
 
                         if (model.getStatus() == RunTimeConfig.SelectConfig.SELECTED)
                             mSelectList.add(model);
@@ -149,7 +152,7 @@ public class OfferHouseDialog extends BaseDialog implements ListItemCallBack {
 
             case R.id.house_content_btn:
 
-                OfferHouseModel model = mDataList.get(position).getList().get((Integer) object[0]);
+                HouseModel model = mDataList.get(position).getList().get((Integer) object[0]);
 
                 model.setStatus(model.getStatus() == RunTimeConfig.SelectConfig.SELECT_NOT ?
                         RunTimeConfig.SelectConfig.SELECTED : RunTimeConfig.SelectConfig.SELECT_NOT);

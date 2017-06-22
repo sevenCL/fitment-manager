@@ -33,6 +33,8 @@
     <!-- 允许应用读取低级别的系统日志文件 -->
     <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -104,11 +106,19 @@
 
         <activity
             android:name=".ui.activity.offer.OfferPersonalityVolumeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateVisible" />
 
         <activity
             android:name=".ui.activity.offer.OfferQuotationActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.newoffer.OfferSpaceActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.activity.newoffer.OfferBaseActivity"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".service.ResourceService" />
 
@@ -117,6 +127,19 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="i55NGK0iGspaEFR2eDIhKrZ6DRyDpwqz" />
+
+        <!--讯飞自动更新-->
+
+        <activity android:name="com.iflytek.autoupdate.IFlytekUpdateDialog" />
+        <service android:name="com.iflytek.autoupdate.IFlytekDownloadService" />
+
+        <!--请注意添加单引号-->
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="'591d0941'" />
+        <meta-data
+            android:name="IFLYTEK_CHANNEL"
+            android:value="" />
 
     </application>
 

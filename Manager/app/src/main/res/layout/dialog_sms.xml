@@ -6,6 +6,7 @@
     android:onClick="btClick">
 
     <LinearLayout
+        android:id="@+id/sms_dialog_ll"
         android:layout_width="match_parent"
         android:layout_height="322dp"
         android:layout_centerInParent="true"
@@ -13,8 +14,8 @@
         android:layout_marginRight="@dimen/margin_max_2x"
         android:background="@drawable/dialog_bg"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:onClick="btClick">
+        android:onClick="btClick"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -70,10 +71,10 @@
                     android:layout_marginRight="@dimen/padding_max"
                     android:background="@drawable/point_border"
                     android:gravity="center"
+                    android:onClick="btClick"
                     android:text="@string/sms"
                     android:textColor="@color/black_30"
-                    android:textSize="@dimen/input_front"
-                    android:onClick="btClick"/>
+                    android:textSize="@dimen/input_front" />
 
                 <EditText
                     android:id="@+id/sms_code_et"
@@ -116,5 +117,14 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/sms_close_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sms_dialog_ll"
+        android:layout_centerHorizontal="true"
+        android:onClick="btClick"
+        android:src="@drawable/guanbi" />
 
 </RelativeLayout>

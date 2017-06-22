@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.frankchen.mvc.aidl.Task;
 import com.seven.library.application.LibApplication;
@@ -50,6 +52,8 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
 
     private OrderModel mModel;
 
+    private int isCompile;
+
     private DbManager db;
     private DbQuotation dbQuotation;
 
@@ -61,15 +65,18 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
 
     private QuotationTitle quotationTitle;
 
+    private LinearLayout mCompileLayout;
+
     /**
      * 跳转方法
      *
      * @param isFinishSrcAct 是否关闭启动页面
      */
-    public static void start(boolean isFinishSrcAct, Serializable serializable) {
+    public static void start(boolean isFinishSrcAct, Serializable serializable, int isCompile) {
         Bundle param = new Bundle();
         param.putBoolean(RunTimeConfig.IntentCodeConfig.FINISH, isFinishSrcAct);
         param.putSerializable(RunTimeConfig.IntentCodeConfig.SERIALIZABLE, serializable);
+        param.putInt(RunTimeConfig.IntentCodeConfig.OFFER_IS_COMPILE, isCompile);
         ActivityStack.getInstance().startActivity(OfferQuotationActivity.class, isFinishSrcAct, param);
     }
 
@@ -116,6 +123,8 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
 
         mRecyclerView = getView(mRecyclerView, R.id.offer_quotation_recycler);
 
+        mCompileLayout = getView(mCompileLayout, R.id.offer_quotation_bottom);
+
     }
 
     @Override
@@ -127,6 +136,9 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
             intent = getIntent();
 
         mModel = (OrderModel) intent.getSerializableExtra(RunTimeConfig.IntentCodeConfig.SERIALIZABLE);
+        isCompile = intent.getIntExtra(RunTimeConfig.IntentCodeConfig.OFFER_IS_COMPILE, RunTimeConfig.FlowConfig.OFFER_IS_COMPILE);
+
+        mCompileLayout.setVisibility(isCompile == RunTimeConfig.FlowConfig.OFFER_IS_COMPILE ? View.VISIBLE : View.GONE);
 
         mDataList = new ArrayList<>();
 
@@ -181,7 +193,7 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
                         RequestUtils.getInstance(Urls.OFFER_QUOTATION).sendQuotation(
                                 RunTimeConfig.RequestConfig.OFFER_QUOTATION, LibApplication.branchId,
                                 model.getOwnerId(), model.getPlanId(), model.getProjectId(), model.getArea(),
-                                model.getHalls(), model.getRooms(), model.getCookhouse(), model.getWashroom(),
+                                model.getHalles(), model.getRooms(), model.getCookhouse(), model.getWashroom(),
                                 model.getBalcony(), model.getOthers(), model.getItemsListJson(),
                                 model.getAddItemsListJson(), model.getHashCode(), OfferQuotationActivity.this);
                     }
@@ -273,7 +285,6 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
                     }
                 });
 
-
     }
 
     private void setRecyclerView() {
@@ -311,7 +322,7 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
 
                         ActivityStack.getInstance().finishActivity(OfferActivity.class);
 
-                        doAction(RunTimeConfig.ActionConfig.REFRESH, Task.PUBLIC, Task.MIN_AUTHORITY, RunTimeConfig.ActionWhatConfig.QUOTATION_ORDER);
+                        doAction(RunTimeConfig.ActionConfig.REFRESH, Task.PUBLIC, Task.MIN_AUTHORITY, RunTimeConfig.ActionWhatConfig.OFFER_ORDER);
 
                         finish();
                     }
@@ -340,7 +351,7 @@ public class OfferQuotationActivity extends BaseTitleActivity implements ListIte
             case RunTimeConfig.RequestConfig.OFFER_QUOTATION:
 
                 LogUtils.println(this.getClass().getName() + " request onFailure OFFER_QUOTATION " + error);
-
+                ToastUtils.getInstance().showToast(error);
                 break;
 
         }

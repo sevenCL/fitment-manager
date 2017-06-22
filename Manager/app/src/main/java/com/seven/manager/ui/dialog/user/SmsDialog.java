@@ -112,7 +112,7 @@ public class SmsDialog extends BaseActivity implements HttpRequestCallBack {
             //点击蒙层区域dismiss=finish
             case R.id.sms_touch_rl:
 
-                finish();
+//                finish();
 
                 break;
 
@@ -127,6 +127,13 @@ public class SmsDialog extends BaseActivity implements HttpRequestCallBack {
             case R.id.sms_next_btn:
 
                 next();
+
+                break;
+
+            //关闭
+            case R.id.sms_close_iv:
+
+                finish();
 
                 break;
         }

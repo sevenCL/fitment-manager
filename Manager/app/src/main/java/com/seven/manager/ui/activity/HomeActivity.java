@@ -7,9 +7,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.frankchen.mvc.aidl.Task;
+import com.iflytek.autoupdate.IFlytekUpdate;
+import com.iflytek.autoupdate.IFlytekUpdateListener;
+import com.iflytek.autoupdate.UpdateConstants;
+import com.iflytek.autoupdate.UpdateInfo;
+import com.seven.library.application.LibApplication;
 import com.seven.library.base.BaseTitleActivity;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.library.task.ActivityStack;
+import com.seven.library.utils.LogUtils;
 import com.seven.library.utils.PermissionUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.manager.R;
@@ -38,6 +44,8 @@ public class HomeActivity extends BaseTitleActivity {
     private IncomeFragment mIncomeFg;
     private UserFragment mUserFg;
 
+    IFlytekUpdate updManager;
+
     /**
      * 跳转方法
      *
@@ -55,6 +63,8 @@ public class HomeActivity extends BaseTitleActivity {
         initView();
 
         initData(null);
+
+        update();
 
     }
 
@@ -84,7 +94,7 @@ public class HomeActivity extends BaseTitleActivity {
 
         switch (task.getWhat()) {
 
-            case RunTimeConfig.ActionWhatConfig.QUOTATION_ORDER:
+            case RunTimeConfig.ActionWhatConfig.OFFER_ORDER:
 
                 if (mOrderFg == null)
                     mOrderFg = new OrderFragment();
@@ -187,4 +197,35 @@ public class HomeActivity extends BaseTitleActivity {
         }
     }
 
+    private void update() {
+        //初始化自动更新对象
+        updManager = IFlytekUpdate.getInstance(LibApplication.getInstance());
+        //开启调试模式，默认不开启
+        updManager.setDebugMode(true);
+        //开启wifi环境下检测更新，仅对自动更新有效，强制更新则生效
+        updManager.setParameter(UpdateConstants.EXTRA_WIFIONLY, "true");
+        //设置通知栏使用应用icon ，详情请见示例
+        updManager.setParameter(UpdateConstants.EXTRA_NOTI_ICON, "true");
+        //设置更新提示类型，默认为通知栏提示
+        updManager.setParameter(UpdateConstants.EXTRA_STYLE, UpdateConstants.UPDATE_UI_DIALOG);
+        // 启动自动更新
+        updManager.autoUpdate(LibApplication.getInstance(), updateListener);
+
+    }
+
+    //自动更新回调方法，详情参考demo
+    IFlytekUpdateListener updateListener = new IFlytekUpdateListener() {
+        @Override
+        public void onResult(int errorcode, UpdateInfo result) {
+
+            try {
+                LogUtils.println(this.getClass().getName() + " update app " + result.getDownloadUrl() + result.getUpdateVersion() + result.getUpdateInfo());
+
+                updManager.showUpdateInfo(LibApplication.getInstance(), result);
+
+            } catch (Exception e) {
+
+            }
+        }
+    };
 }

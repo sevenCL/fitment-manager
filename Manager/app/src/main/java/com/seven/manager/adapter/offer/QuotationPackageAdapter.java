@@ -51,8 +51,8 @@ public class QuotationPackageAdapter extends RecyclerView.Adapter<QuotationPacka
     public void onBindViewHolder(PackageHolder holder, int position) {
 
         holder.space.setText(mList.get(position).getName());
-        holder.area.setText(String.valueOf(mList.get(position).getSpaceArea()));
-        holder.perimeter.setText(String.valueOf(mList.get(position).getPerimeter()));
+        holder.area.setText(String.valueOf(mList.get(position).getSpaceArea())+"m²");
+        holder.perimeter.setText(String.valueOf(mList.get(position).getPerimeter())+"m");
 
     }
 

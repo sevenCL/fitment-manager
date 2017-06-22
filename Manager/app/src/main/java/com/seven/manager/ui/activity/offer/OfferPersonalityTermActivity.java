@@ -306,6 +306,8 @@ public class OfferPersonalityTermActivity extends BaseTitleActivity implements L
 
     private void setChildSpinner(String parent) {
 
+        mSmallList=new ArrayList<>();
+
         for (OfferPersonalityTermModel model : mAllList) {
 
             boolean isAdd = true;

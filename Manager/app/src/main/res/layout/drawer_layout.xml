@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/drawer_title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/drawer_left_rl"
+            android:layout_width="@dimen/title"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_click"
+            android:onClick="btClick">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/base_button_left" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/drawer_title_tv"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/drawer_right_rl"
+            android:layout_width="@dimen/title"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_click"
+            android:onClick="btClick">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/gouwuche" />
+
+            <TextView
+                android:id="@+id/drawer_count_tv"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_min"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/cir_red_point"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/drawer_search_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title"
+        android:layout_below="@+id/drawer_title_rl"
+        android:background="@color/impression"
+        android:paddingBottom="@dimen/padding_max_2m"
+        android:paddingLeft="@dimen/padding_max"
+        android:paddingRight="@dimen/padding_max"
+        android:paddingTop="@dimen/padding_max_2m">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cir_border_white_white"
+            android:paddingLeft="@dimen/padding_max"
+            android:paddingRight="@dimen/padding_max">
+
+            <ImageView
+                android:id="@+id/drawer_search_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/sousuo" />
+
+            <ImageView
+                android:id="@+id/drawer_delete_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_max"
+                android:layout_marginRight="@dimen/padding_max"
+                android:layout_toLeftOf="@+id/drawer_search_iv"
+                android:onClick="btClick"
+                android:src="@drawable/shanchu"
+                android:visibility="invisible" />
+
+            <EditText
+                android:id="@+id/drawer_search_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/drawer_delete_iv"
+                android:background="@null"
+                android:hint="@string/offer_search"
+                android:textColor="@color/black_30"
+                android:textColorHint="@color/hint"
+                android:textSize="@dimen/input_front" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/drawer_term_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/drawer_search_rl"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/drawer_class_recycler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/line" />
+
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/drawer_term_recycler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/drawer_search_term_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/drawer_search_rl"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <com.seven.library.view.AutoLoadRecyclerView
+            android:id="@+id/drawer_search_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

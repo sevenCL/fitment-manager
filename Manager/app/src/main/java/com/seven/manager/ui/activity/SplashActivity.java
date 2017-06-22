@@ -67,6 +67,8 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
 
         startService(serviceIntent);
 
+        splash();
+
     }
 
     public void btClick(View view) {
@@ -82,7 +84,6 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
                 break;
         }
 
-        splash();
     }
 
     /**
@@ -103,18 +104,18 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
             @Override
             public void onAnimationEnd(Animation animation) {
 
-                if (SharedData.getInstance().getIsFirst()) {
-
-                    SharedData.getInstance().setIsFirst(false);
-
-                    //引导页
-                    GuideActivity.start(true);
-
-                } else {
+//                if (SharedData.getInstance().getIsFirst()) {
+//
+//                    SharedData.getInstance().setIsFirst(false);
+//
+//                    //引导页
+//                    GuideActivity.start(true);
+//
+//                } else {
 
                     next();
 
-                }
+//                }
 
             }
 

@@ -2,7 +2,6 @@ package com.seven.manager.adapter.offer;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +62,7 @@ public class OfferHouseAdapter extends RecyclerView.Adapter<OfferHouseAdapter.Ho
     @Override
     public void onBindViewHolder(HouseHolder holder, int position) {
 
-        holder.mTitle.setText(ResourceUtils.getInstance().HouseType(mList.get(position).getType()));
+        holder.mTitle.setText(ResourceUtils.getInstance().houseType(mList.get(position).getType()));
 
         holder.mRecyclerView.setHasFixedSize(false);
 

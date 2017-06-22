@@ -10,7 +10,9 @@ public class Urls {
     /**
      * 请求地址
      */
-    public static final String SERVER = "http://dev.gateway.51shejihome.com"; //测试服务器
+    public static final String SERVER = "http://test.gateway.51shejihome.com"; //测试服务器
+//    public static final String SERVER = "http://192.168.60.238:9100"; //文老师
+//    public static final String SERVER = "http://gateway.sureto.cn"; //正式服务器
 
     /**
      * 图片地址
@@ -97,7 +99,7 @@ public class Urls {
     /**
      * 报价-房间
      */
-    public static final String OFFER_HOUSE = SERVER + "/quotation/quotationPlanSpace/list";
+    public static final String OFFER_HOUSE = SERVER + "/quotation/quotationSpaceType/list";
 
     /**
      * 套餐信息
@@ -108,6 +110,16 @@ public class Urls {
      * 发送报价单
      */
     public static final String OFFER_QUOTATION = SERVER + "/quotation/quotationProjectOrder/save";
+
+    /**
+     * 奖励金信息
+     */
+    public static final String OFFER_REWARD = SERVER + "/quotation/quotationSettings/getByNumber";
+
+    /**
+     * 保存报价
+     */
+    public static final String OFFER_SAVE = SERVER + "/quotation/quotationProjectOrder/save";
 
     //===================================================================== 资源包
 

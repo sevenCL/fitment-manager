@@ -1,5 +1,7 @@
 package com.seven.manager.model.offer;
 
+import com.seven.manager.model.newoffer.HouseModel;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class OfferHouse implements Serializable {
     //房间类型
     private int type;
 
-    private List<OfferHouseModel> list;
+    private List<HouseModel> list;
 
     public int getType() {
         return type;
@@ -29,11 +31,11 @@ public class OfferHouse implements Serializable {
         this.type = type;
     }
 
-    public void addList(OfferHouseModel model) {
+    public void addList(HouseModel model) {
         this.list.add(model);
     }
 
-    public List<OfferHouseModel> getList() {
+    public List<HouseModel> getList() {
         return list;
     }
 

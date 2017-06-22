@@ -82,15 +82,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         holder.mOrderProStartLayout.setVisibility(View.GONE);
         holder.mOrderInvalidLayout.setVisibility(View.GONE);
 
+        int visible = View.VISIBLE;
+
         switch (model.getStatus()) {
 
             //新预约
             case RunTimeConfig.StatusConfig.ORDER_STATUS_NEW:
 
-                hintStr = ResourceUtils.getInstance().getFormatText(R.string.end_time,
-                        DateFormatUtils.getInstance().millisecondToDateSecondC(model.getEndTime()));
+                hintStr = ResourceUtils.getInstance().getText(R.string.end_time);
 
                 holder.mOrderNewLayout.setVisibility(View.VISIBLE);
+
+                visible = View.GONE;
 
                 break;
 
@@ -106,8 +109,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             //待报价
             case RunTimeConfig.StatusConfig.ORDER_STATUS_OFFER:
 
-                hintStr = ResourceUtils.getInstance().getFormatText(R.string.order_offer_start,
-                        DateFormatUtils.getInstance().millisecondToDateSecondC(model.getEndTime()));
+                hintStr = ResourceUtils.getInstance().getText(R.string.order_offer_start);
 
                 statusId = R.drawable.tv_half_orange;
 
@@ -152,7 +154,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         holder.mStatus.setBackgroundResource(statusId);
         holder.mHint.setText(hintStr);
-
+        holder.mPhone.setVisibility(visible);
     }
 
     @Override
@@ -174,6 +176,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         //地址
         private TextView mHouse;
+
+        //电话
+        private ImageView mPhone;
 
         //定位
         private ImageView mLocation;
@@ -208,6 +213,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         //已报价
         private RelativeLayout mOrderOfferOverLayout;
 
+        private RelativeLayout mLookQuotationBtn;
+
         //-------------------------------------待开工g
         //待开工
         private RelativeLayout mOrderProStartLayout;
@@ -223,6 +230,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             mName = getView(mName, R.id.order_name_tv);
             mArea = getView(mArea, R.id.order_area_tv);
             mHouse = getView(mHouse, R.id.order_address_tv);
+            mPhone = getView(mPhone, R.id.order_phone_iv);
             mLocation = getView(mLocation, R.id.order_location_iv);
             mHint = getView(mHint, R.id.order_hint_tv);
             mSubmitTime = getView(mSubmitTime, R.id.order_submit_time_tv);
@@ -236,6 +244,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             mOrderOfferBtn = getView(mOrderOfferBtn, R.id.order_offer_btn);
 
             mOrderOfferOverLayout = getView(mOrderOfferOverLayout, R.id.order_offer_over_rl);
+            mLookQuotationBtn = getView(mLookQuotationBtn, R.id.order_offer_see_btn);
 
             mOrderProStartLayout = getView(mOrderProStartLayout, R.id.order_project_start_rl);
 
@@ -243,9 +252,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
             mRefuseBtn.setOnClickListener(this);
             mAcceptBtn.setOnClickListener(this);
+            mPhone.setOnClickListener(this);
             mLocation.setOnClickListener(this);
 
             mOrderOfferBtn.setOnClickListener(this);
+
+            mLookQuotationBtn.setOnClickListener(this);
 
         }
 
