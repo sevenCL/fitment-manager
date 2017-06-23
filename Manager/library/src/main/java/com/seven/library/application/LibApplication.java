@@ -83,7 +83,7 @@ public class LibApplication extends BaseApplication {
                 });
 
         //开启日志---打包时关闭
-        LogUtils.isDebug = true;
+        LogUtils.isDebug = false;
 
         SDKInitializer.initialize(getInstance());
 

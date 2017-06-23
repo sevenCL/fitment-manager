@@ -76,6 +76,8 @@
     <string name="dialog_accept">确认接受预约？</string>
     <string name="dialog_quotation">确认保存报价？</string>
     <string name="dialog_term_hint">请填写施工项目方量</string>
+    <string name="dialog_next_hint">请确认房间信息正确</string>
+    <string name="dialog_back_hint">返回后当前报价数据会丢失</string>
 
     <!-- offer -->
     <string name="offer_package">房间信息</string>
@@ -158,5 +160,7 @@
     <string name="toast_offer_save">请添加房间</string>
     <string name="toast_send">发送成功</string>
     <string name="toast_data_failure">获取房间信息失败</string>
+    <string name="toast_base_reward">奖励金信息获取失败</string>
+    <string name="toast_space_null">请添加空间</string>
 
 </resources>

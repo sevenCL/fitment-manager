@@ -148,6 +148,8 @@
 -keep class com.baidu.** { *; }
 -keep class vi.com.gdi.bgl.android.**{*;}
 
+-keep class org.apache.**{*;}
+
 #极光
 #-dontoptimize
 #-dontpreverify

@@ -34,6 +34,7 @@ import com.seven.manager.model.newoffer.SpaceItem;
 import com.seven.manager.model.newoffer.SpaceItemList;
 import com.seven.manager.model.newoffer.SpaceTitle;
 import com.seven.manager.model.order.OrderModel;
+import com.seven.manager.ui.dialog.CommonDialog;
 import com.seven.manager.ui.dialog.offer.OfferHouseDialog;
 
 import org.json.JSONException;
@@ -86,6 +87,8 @@ public class OfferSpaceActivity extends BaseTitleActivity implements HttpRequest
     private TextView mSpaceArea;
 
     private OfferRewardModel rewardModel;
+
+    private CommonDialog commonDialog;
 
     /**
      * 跳转方法
@@ -210,11 +213,54 @@ public class OfferSpaceActivity extends BaseTitleActivity implements HttpRequest
             //下一步
             case R.id.space_next_btn:
 
-                OfferBaseActivity.start(false, model.getProjectId(), (Serializable) mDataList,
-                        rewardModel, (Serializable) mSpaceList, mHouseList.get(mHouseList.size() - 1));
+                try {
+
+                    if (rewardModel == null) {
+                        ToastUtils.getInstance().showToast(R.string.toast_base_reward);
+                        return;
+                    }
+
+                    if (mHouseList.size() == 0) {
+                        ToastUtils.getInstance().showToast(R.string.toast_space_null);
+                        return;
+                    }
+                    showNextDialog();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 break;
 
+        }
+
+    }
+
+    private void showNextDialog() {
+
+        if (commonDialog == null || !commonDialog.isShowing()) {
+
+            commonDialog = new CommonDialog(OfferSpaceActivity.this, R.style.Dialog,
+                    RunTimeConfig.DialogTagConfig.TAG_NEXT, new DialogClickCallBack() {
+                @Override
+                public void onCancelClick(View view) {
+
+                }
+
+                @Override
+                public void onSureClick(View view) {
+
+                    OfferBaseActivity.start(false, model.getProjectId(), (Serializable) mDataList,
+                            rewardModel, (Serializable) mSpaceList, mHouseList.get(mHouseList.size() - 1));
+
+                }
+
+                @Override
+                public void onClick(View view, Object... object) {
+
+                }
+            });
+            commonDialog.show();
         }
 
     }

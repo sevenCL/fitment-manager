@@ -640,6 +640,15 @@ public class RunTimeConfig {
          */
         public static final int TAG_QUOTATION = 3;
 
+        /**
+         * 报价下一步
+         */
+        public static final int TAG_NEXT = 4;
+
+        /**
+         * 报价返回
+         */
+        public static final int TAG_BACK = 5;
     }
 
     /**

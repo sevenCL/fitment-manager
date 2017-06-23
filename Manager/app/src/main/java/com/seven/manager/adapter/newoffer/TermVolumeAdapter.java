@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.seven.library.base.BaseViewHolder;
@@ -149,7 +150,7 @@ public class TermVolumeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         private EditText volume;
 
-        private ImageView delete;
+        private RelativeLayout delete;
 
         public Item(View itemView) {
             super(itemView);
@@ -157,7 +158,7 @@ public class TermVolumeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             name = getView(name, R.id.volume_name_tv);
             volume = getView(volume, R.id.volume_et);
 
-            delete = getView(delete, R.id.volume_delete_iv);
+            delete = getView(delete, R.id.volume_delete_btn);
             delete.setOnClickListener(this);
 
             volume.addTextChangedListener(new TextWatcher() {

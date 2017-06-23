@@ -97,6 +97,17 @@ public class CommonDialog extends BaseDialog {
 
                 break;
 
+            case RunTimeConfig.DialogTagConfig.TAG_NEXT:
+
+                content = ResourceUtils.getInstance().getText(R.string.dialog_next_hint);
+
+                break;
+
+            case RunTimeConfig.DialogTagConfig.TAG_BACK:
+
+                content = ResourceUtils.getInstance().getText(R.string.dialog_back_hint);
+
+                break;
         }
 
         mContent.setText(content);

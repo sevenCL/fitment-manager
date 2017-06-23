@@ -16,36 +16,43 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padding_max"
             android:textColor="@color/black_30"
-            android:textSize="@dimen/input_back"
-            android:layout_marginRight="@dimen/padding_max"/>
+            android:textSize="@dimen/input_back" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/volume_name_tv"
+            android:background="@drawable/edit_print_bg"
             android:paddingLeft="@dimen/padding_max"
-            android:paddingRight="@dimen/padding_max"
-            android:background="@drawable/edit_print_bg">
+            android:paddingRight="@dimen/padding_max">
 
             <EditText
                 android:id="@+id/volume_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/volume_delete_btn"
                 android:background="@null"
                 android:inputType="numberDecimal"
                 android:textColor="@color/black_30"
-                android:textSize="@dimen/input_front"
-                android:layout_toLeftOf="@+id/volume_delete_iv"/>
+                android:textSize="@dimen/input_front" />
 
-            <ImageView
-                android:id="@+id/volume_delete_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/volume_delete_btn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/shanchu"
-                android:visibility="invisible"/>
+                android:visibility="invisible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shanchu"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

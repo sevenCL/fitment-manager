@@ -351,7 +351,7 @@ public class TermVolumeDialog extends BaseDialog implements ListItemCallBack {
                 getTotal(true);
 
                 break;
-            case R.id.volume_delete_iv:
+            case R.id.volume_delete_btn:
 
                 if (mDataList.get(position).getViewType() == RunTimeConfig.ModelConfig.TERM_VOLUME_ITEM) {
 

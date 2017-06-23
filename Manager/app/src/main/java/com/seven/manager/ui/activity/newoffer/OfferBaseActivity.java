@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -50,6 +51,7 @@ import com.seven.manager.model.newoffer.OfferRewardModel;
 import com.seven.manager.model.newoffer.OfferSpaceModel;
 import com.seven.manager.model.newoffer.SpaceItem;
 import com.seven.manager.model.newoffer.SpaceItemList;
+import com.seven.manager.ui.dialog.CommonDialog;
 import com.seven.manager.ui.dialog.newoffer.ShoppingCartDialog;
 import com.seven.manager.ui.dialog.newoffer.SubmitOfferDialog;
 import com.seven.manager.ui.dialog.newoffer.TermVolumeDialog;
@@ -139,6 +141,8 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
     private SubmitOfferDialog submitOfferDialog;
 
+    private CommonDialog commonDialog;
+
     /**
      * 跳转方法
      *
@@ -224,6 +228,11 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
         mSpaceList = (List<Map<String, Integer>>) intent.getSerializableExtra(RunTimeConfig.IntentCodeConfig.SPACE_LIST);
         houseModel = (HouseModel) intent.getSerializableExtra(RunTimeConfig.IntentCodeConfig.HOUSE_MODEL);
 
+        if (mHouseList == null || mHouseList.size() == 0 ||
+                reward == null || projectId == 0 ||
+                mSpaceList == null || mSpaceList.size() == 0 || houseModel == null)
+            return;
+
         for (OfferSpaceModel spaceModel : mHouseList) {
 
             if (spaceModel.getViewType() == RunTimeConfig.ModelConfig.SPACE_ITEM) {
@@ -267,7 +276,7 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
             //返回
             case R.id.base_left_rl:
 
-                finish();
+                showBackDialog();
 
                 break;
 
@@ -1344,4 +1353,44 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
     public void onProgress(long progress, int requestId) {
 
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            showBackDialog();
+        }
+
+        return false;
+
+    }
+
+    private void showBackDialog() {
+
+        if (commonDialog == null || !commonDialog.isShowing()) {
+
+            commonDialog = new CommonDialog(OfferBaseActivity.this, R.style.Dialog,
+                    RunTimeConfig.DialogTagConfig.TAG_BACK, new DialogClickCallBack() {
+                @Override
+                public void onCancelClick(View view) {
+
+                }
+
+                @Override
+                public void onSureClick(View view) {
+
+                    finish();
+
+                }
+
+                @Override
+                public void onClick(View view, Object... object) {
+
+                }
+            });
+            commonDialog.show();
+
+        }
+
+    }
+
 }
