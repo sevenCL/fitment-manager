@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.seven.manager"
+        applicationId "com.sureto.manager"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
@@ -24,74 +24,74 @@ android {
         }
     }
 
-//    productFlavors {
-//        m360 {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "m360"]
-//        }
-//        baidu {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
-//        }
-//        umeng {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
-//        }
-//        wandoujia {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
-//        }
-//        appchina {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "appchina"]
-//        }
-//        xiaomi {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
-//        }
-//        lenovo {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lenovo"]
-//        }
-//        meizu {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
-//        }
-//        c25pp {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "25pp"]
-//        }
-//        oppo {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
-//        }
-//        google {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "google"]
-//        }
-//        tencent {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"]
-//        }
-//        sougou {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "sougou"]
-//        }
-//        liqu {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu"]
-//        }
-//        pugongying {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "pugongying"]
-//        }
-//        jinli {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jinli"]
-//        }
-//        others {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "others"]
-//        }
-//        huluxia {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huluxia"]
-//        }
-//        anzhi {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"]
-//        }
-//        root360 {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "root360"]
-//        }
-//        huawei {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
-//        }
-//        bate {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "bate"]
-//        }
-//    }
+    productFlavors {
+        m360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "m360"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+        umeng {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+        appchina {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "appchina"]
+        }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+        lenovo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lenovo"]
+        }
+        meizu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
+        }
+        c25pp {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "25pp"]
+        }
+        oppo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
+        }
+        google {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "google"]
+        }
+        tencent {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"]
+        }
+        sougou {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "sougou"]
+        }
+        liqu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu"]
+        }
+        pugongying {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "pugongying"]
+        }
+        jinli {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jinli"]
+        }
+        others {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "others"]
+        }
+        huluxia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huluxia"]
+        }
+        anzhi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"]
+        }
+        root360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "root360"]
+        }
+        huawei {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+        bate {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "bate"]
+        }
+    }
 
 }
 

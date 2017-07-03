@@ -111,14 +111,16 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
         mDataList = new ArrayList<>();
 
-        //数据库
-
-        db = x.getDb(LibApplication.daoConfig);
-
-
         try {
+
+            //数据库
+
+            db = x.getDb(LibApplication.daoConfig);
+
             dbOderList = db.selector(DbOrderList.class).findFirst();
         } catch (DbException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -160,13 +162,16 @@ public class OrderFragment extends BaseFragment implements HttpRequestCallBack, 
 
     private void getData() {
 
-        //数据库
-
-        db = x.getDb(LibApplication.daoConfig);
-
         try {
+
+            //数据库
+
+            db = x.getDb(LibApplication.daoConfig);
+
             dbOderList = db.selector(DbOrderList.class).findFirst();
         } catch (DbException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

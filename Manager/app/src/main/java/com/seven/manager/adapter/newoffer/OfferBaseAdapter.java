@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.library.config.RunTimeConfig;
+import com.seven.library.utils.CheckUtils;
 import com.seven.manager.R;
 import com.seven.manager.model.newoffer.BaseControl;
 import com.seven.manager.model.newoffer.BaseItem;
@@ -142,7 +143,7 @@ public class OfferBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         holder.title.setText(title.getName());
 
-        holder.amount.setText("合计：" + new DecimalFormat("#0.00").format(title.getTotal()));
+        holder.amount.setText("合计：" + CheckUtils.getInstance().format(title.getTotal()));
 
     }
 
@@ -192,9 +193,9 @@ public class OfferBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         holder.term.setText(item.getName());
 
-        holder.volume.setText(new DecimalFormat("#0.00").format(item.getVolume()) + item.getUnitName());
+        holder.volume.setText(CheckUtils.getInstance().format(item.getVolume()) + item.getUnitName());
 
-        holder.total.setText("小计：" + new DecimalFormat("#0.00").format(item.getTotal()));
+        holder.total.setText("小计：" + CheckUtils.getInstance().format(item.getTotal()));
 
         holder.iv.setVisibility(item.isDefaultItem() ? View.INVISIBLE : View.VISIBLE);
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.seven.library.base.BaseViewHolder;
+import com.seven.library.utils.CheckUtils;
 import com.seven.manager.R;
 import com.seven.manager.model.offer.QuotationPersonalityItem;
 
@@ -53,7 +54,7 @@ public class QuotationPersonalityAdapter extends RecyclerView.Adapter<QuotationP
 
         holder.term.setText(mList.get(position).getName());
         holder.volume.setText(mList.get(position).getQuantity()+mList.get(position).getUnit());
-        holder.price.setText(new DecimalFormat("#0.00").format(mList.get(position).getPrice()));
+        holder.price.setText(String.valueOf(CheckUtils.getInstance().format(mList.get(position).getPrice())));
 
     }
 

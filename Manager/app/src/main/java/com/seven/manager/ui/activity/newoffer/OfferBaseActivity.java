@@ -64,7 +64,6 @@ import org.xutils.ex.DbException;
 import org.xutils.x;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -254,12 +253,15 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
         mDataList = new ArrayList<>();
 
-        //数据库
-        db = x.getDb(LibApplication.daoConfig);
-
         try {
+
+            //数据库
+            db = x.getDb(LibApplication.daoConfig);
+
             resPersonality = db.selector(ResPersonality.class).findFirst();
         } catch (DbException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -533,10 +535,10 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
     private void statistics() {
 
-        mOfferTv.setText(new DecimalFormat("#0.00").format(baseTotal));
-        mAreaTv.setText(new DecimalFormat("#0.00").format(totalArea) + "m²");
-        mRewardTv.setText(new DecimalFormat("#0.00").format(baseTotal * reward.getValue() / 100));
-        mAmountTv.setText(new DecimalFormat("#0.00").format(baseTotal + baseTotal * reward.getValue() / 100));
+        mOfferTv.setText(String.valueOf(CheckUtils.getInstance().format(baseTotal)));
+        mAreaTv.setText(String.valueOf(CheckUtils.getInstance().format(totalArea) + "m²"));
+        mRewardTv.setText(String.valueOf(CheckUtils.getInstance().format(baseTotal * reward.getValue() / 100)));
+        mAmountTv.setText(String.valueOf(CheckUtils.getInstance().format(baseTotal + baseTotal * reward.getValue() / 100)));
     }
 
     private void setRecyclerView() {
@@ -732,12 +734,46 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
     }
 
-    private void showTermDialog(final BaseTerm term) {
+    private void showTermDialog(BaseTerm term) {
+
+        BaseTerm newTerm = term;
+
+        for (BaseItem item : mTermCountList) {
+
+            if (item.getId() == term.getId()) {
+                newTerm = new BaseTerm();
+                newTerm.setId(item.getId());
+                newTerm.setName(item.getName());
+                newTerm.setBaseItemPid(item.getBaseItemPid());
+                newTerm.setBaseItemPidName(item.getBaseItemPidName());
+                newTerm.setBaseItemId(item.getBaseItemId());
+                newTerm.setBaseItemName(item.getBaseItemName());
+                newTerm.setCategoryId(item.getCategoryId());
+                newTerm.setDefaultItem(item.isDefaultItem());
+                newTerm.setDescription(item.getDescription());
+                newTerm.setFormula(item.getFormula());
+                newTerm.setNumber(item.getNumber());
+                newTerm.setOffer(item.getOffer());
+                newTerm.setOverallItem(item.isOverallItem());
+                newTerm.setStatus(item.getStatus());
+                newTerm.setUnitName(item.getUnitName());
+                newTerm.setUnitId(item.getUnitId());
+                newTerm.setWorkType(item.getWorkType());
+
+                for (SpaceItemList itemList : item.getList()) {
+                    newTerm.addList(itemList);
+                }
+
+                break;
+            }
+
+        }
+
 
         if (volumeDialog == null || !volumeDialog.isShowing()) {
 
             volumeDialog = new TermVolumeDialog(OfferBaseActivity.this,
-                    R.style.Dialog, term, new DialogClickCallBack() {
+                    R.style.Dialog, newTerm, new DialogClickCallBack() {
                 @Override
                 public void onCancelClick(View view) {
 
@@ -765,7 +801,8 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
                     for (BaseItem item : mTermCountList) {
                         if (item.getId() == baseTerm.getId()) {
-                            item.setVolume(item.getVolume() + totalVolume);
+                            item.setVolume(totalVolume);
+                            item.setTotal(item.getVolume() * item.getOffer());
 
                             for (SpaceItemList termList : baseTerm.getList()) {
                                 for (SpaceItemList itemList : item.getList()) {
@@ -897,19 +934,49 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
                 int index = i;
 
-
                 for (BaseItem baseItem : mTermCountList) {
 
-                    index++;
+                    boolean isMerge = false;
 
-                    baseItem.setShow(((BaseItem) mDataList.get(i)).isShow());
+                    for (OfferBaseModel baseModel : mDataList) {
 
-                    classTotal += baseItem.getTotal();
+                        if (baseModel.getViewTpye() == RunTimeConfig.ModelConfig.BASE_ITEM &&
+                                ((BaseItem) baseModel).getId() == baseItem.getId()) {
 
-                    mDataList.add(index, baseItem);
+                            classTotal += baseItem.getTotal();
 
-                    isAddItem = true;
+                            ((BaseItem) baseModel).setTotal(((BaseItem) baseModel).getTotal() + baseItem.getTotal());
+                            ((BaseItem) baseModel).setVolume(((BaseItem) baseModel).getVolume() + baseItem.getVolume());
 
+                            for (SpaceItemList termList : baseItem.getList()) {
+                                for (SpaceItemList itemList : ((BaseItem) baseModel).getList()) {
+
+                                    if (termList.getId() == itemList.getId() &&
+                                            termList.getTag() == itemList.getTag()) {
+
+                                        itemList.setVolume(itemList.getVolume() + termList.getVolume());
+                                    }
+
+                                }
+                            }
+
+                            isMerge = true;
+                            isAddItem = true;
+                        }
+
+                    }
+
+                    if (!isMerge) {
+
+                        index++;
+
+                        baseItem.setShow(((BaseItem) mDataList.get(i)).isShow());
+
+                        classTotal += baseItem.getTotal();
+
+                        mDataList.add(index, baseItem);
+                        isAddItem = true;
+                    }
                 }
 
                 break;
@@ -979,9 +1046,9 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
         }
 
-        mOfferTv.setText(new DecimalFormat("#0.00").format(total));
-        mRewardTv.setText(new DecimalFormat("#0.00").format(total * reward.getValue() / 100));
-        mAmountTv.setText(new DecimalFormat("#0.00").format(total + total * reward.getValue() / 100));
+        mOfferTv.setText(String.valueOf(CheckUtils.getInstance().format(total)));
+        mRewardTv.setText(String.valueOf(CheckUtils.getInstance().format(total * reward.getValue() / 100)));
+        mAmountTv.setText(String.valueOf(CheckUtils.getInstance().format(total + total * reward.getValue() / 100)));
     }
 
     private void showBaseItemDialog(BaseItem item, final int position) {
@@ -1166,19 +1233,19 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
             switch (map.get("type")) {
 
                 case RunTimeConfig.HouseConfig.HALL:
-                    halles++;
+                    halles = map.get("count");
                     break;
                 case RunTimeConfig.HouseConfig.ROOM:
-                    rooms++;
+                    rooms = map.get("count");
                     break;
                 case RunTimeConfig.HouseConfig.KITCHEN:
-                    cookhouse++;
+                    cookhouse = map.get("count");
                     break;
                 case RunTimeConfig.HouseConfig.TOILET:
-                    washroom++;
+                    washroom = map.get("count");
                     break;
                 case RunTimeConfig.HouseConfig.BALCONY:
-                    balcony++;
+                    balcony = map.get("count");
                     break;
             }
         }
@@ -1225,6 +1292,7 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
                                     jsonListItem.put("itemId", baseItem.getId());
                                     jsonListItem.put("quantity", baseItemList.getVolume());
+                                    jsonListItem.put("tag", itemList.getTag());
                                     jsonListItem.put("step", baseItem.getBaseItemPidName());
                                     jsonList.put(jsonListItem);
                                 }
@@ -1251,11 +1319,10 @@ public class OfferBaseActivity extends BaseActivity implements ListItemCallBack,
 
                     jsonListItem.put("itemId", baseItem.getId());
                     jsonListItem.put("quantity", baseItem.getVolume());
-                    jsonListItem.put("step", baseItem.getName());
+                    jsonListItem.put("step", baseItem.getBaseItemPidName());
                     jsonList.put(jsonListItem);
 
                 }
-
             }
 
             jsonSpaceItem.put("spaceTypeId", houseModel.getId());

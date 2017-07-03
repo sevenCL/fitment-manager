@@ -3,18 +3,20 @@ package com.seven.manager.adapter.newoffer;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
+import com.seven.library.utils.CheckUtils;
 import com.seven.library.utils.ScreenUtils;
 import com.seven.library.view.DashedLineView;
 import com.seven.manager.R;
@@ -111,18 +113,39 @@ public class SpaceItemAdapter extends RecyclerView.Adapter<SpaceItemAdapter.Item
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
 
-                    if (!s.toString().equals(".")) {
-                        (mList.get(getLayoutPosition())).setArea(s.length() > 0 ? Double.parseDouble(s.toString()) : 0);
+                    (mList.get(getLayoutPosition())).setArea(s.length() > 0 ? Double.parseDouble(s.toString()) : 0);
 
-                        mCallBack.onItemClick(area, getLayoutPosition());
-                    }
+                    mCallBack.onItemClick(area, getLayoutPosition());
                 }
             });
+
+            area.setFilters(new InputFilter[]{new InputFilter() {
+                @Override
+                public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                    if (source.equals(".") && dest.toString().length() == 0) {
+                        return "0.";
+                    }
+                    if (dest.toString().contains(".")) {
+                        int index = dest.toString().indexOf(".");
+                        int mlength = dest.toString().substring(index).length();
+                        if (mlength == 2) {
+                            return "";
+                        }
+                    }
+
+                    if (dest.toString().length() == 5)
+                        return "";
+
+                    return null;
+                }
+            }});
+
         }
 
         @Override
@@ -139,18 +162,18 @@ public class SpaceItemAdapter extends RecyclerView.Adapter<SpaceItemAdapter.Item
 
         holder.line.setVisibility(itemList.isShowName() ? View.VISIBLE : View.INVISIBLE);
 
-        holder.area.setText(itemList.getArea() == 0 ? "" : new DecimalFormat("#0.00").format(itemList.getArea()));
+        holder.area.setText(itemList.getArea() == 0 ? "" : String.valueOf(CheckUtils.getInstance().format(itemList.getArea())));
 
         if (position != mList.size() - 1) {
             holder.dashed.setVisibility(View.GONE);
             holder.layout.setPadding(
-                    ScreenUtils.getInstance().dip2px(16),ScreenUtils.getInstance().dip2px(16),
-                    ScreenUtils.getInstance().dip2px(16),0);
+                    ScreenUtils.getInstance().dip2px(16), ScreenUtils.getInstance().dip2px(16),
+                    ScreenUtils.getInstance().dip2px(16), 0);
         } else {
             holder.dashed.setVisibility(View.VISIBLE);
             holder.layout.setPadding(
-                    ScreenUtils.getInstance().dip2px(16),ScreenUtils.getInstance().dip2px(16),
-                    ScreenUtils.getInstance().dip2px(16),ScreenUtils.getInstance().dip2px(16));
+                    ScreenUtils.getInstance().dip2px(16), ScreenUtils.getInstance().dip2px(16),
+                    ScreenUtils.getInstance().dip2px(16), ScreenUtils.getInstance().dip2px(16));
         }
 
     }

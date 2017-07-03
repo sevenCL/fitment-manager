@@ -6,6 +6,7 @@ import org.apache.commons.jexl3.JexlBuilder;
 import org.apache.commons.jexl3.JexlEngine;
 import org.apache.commons.jexl3.JexlExpression;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,6 +63,17 @@ public class CheckUtils {
     }
 
     /**
+     *
+     * @param str
+     * @return
+     */
+    public boolean isInputType(String str) {
+        Pattern pattern = Pattern.compile("^\\d+(\\.\\d{2})?$");
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
+
+    /**
      * 验证身份证号是否符合规则
      *
      * @param str 身份证号
@@ -75,7 +87,6 @@ public class CheckUtils {
     }
 
     /**
-     *
      * @param area
      * @param formula
      * @return
@@ -92,6 +103,16 @@ public class CheckUtils {
         Object evaluate = jexlExpression.evaluate(null);
 
         return Double.parseDouble(evaluate.toString());
+    }
+
+    public double format(double value) {
+
+        Double flag = null;
+        String text = String.valueOf(value);
+        BigDecimal bd = new BigDecimal(text).setScale(1, BigDecimal.ROUND_HALF_UP);
+        flag = bd.doubleValue();
+        return flag;
+
     }
 
 }

@@ -18,6 +18,7 @@ import com.seven.library.http.RequestUtils;
 import com.seven.library.http.Urls;
 import com.seven.library.json.JsonHelper;
 import com.seven.library.utils.LogUtils;
+import com.seven.library.utils.PermissionUtils;
 import com.seven.manager.R;
 import com.seven.manager.model.user.RegisterModel;
 import com.seven.manager.service.ResourceService;
@@ -62,6 +63,9 @@ public class SplashActivity extends BaseActivity implements HttpRequestCallBack 
 
     @Override
     public void initData(Intent intent) {
+
+        //存储调用、手机状态权限
+        PermissionUtils.getInstance(getPackageManager()).sdcardPermission(this);
 
         Intent serviceIntent = new Intent(LibApplication.getInstance(), ResourceService.class);
 

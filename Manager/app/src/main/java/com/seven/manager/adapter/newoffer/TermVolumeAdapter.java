@@ -3,6 +3,8 @@ package com.seven.manager.adapter.newoffer;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.library.config.RunTimeConfig;
+import com.seven.library.utils.CheckUtils;
 import com.seven.manager.R;
 import com.seven.manager.model.newoffer.TermVolumeItem;
 import com.seven.manager.model.newoffer.TermVolumeModel;
@@ -169,13 +172,11 @@ public class TermVolumeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (!s.toString().equals(".")) {
-                        ((TermVolumeItem) list.get(getLayoutPosition())).setVolume(s.length() > 0 ? Double.parseDouble(s.toString()) : 0);
+                    ((TermVolumeItem) list.get(getLayoutPosition())).setVolume(s.length() > 0 ? Double.parseDouble(s.toString()) : 0);
 
-                        delete.setVisibility(s.toString().length() > 0 ? View.VISIBLE : View.INVISIBLE);
+                    delete.setVisibility(s.toString().length() > 0 ? View.VISIBLE : View.INVISIBLE);
 
-                        callBack.onItemClick(volume, getLayoutPosition(), s.toString());
-                    }
+                    callBack.onItemClick(volume, getLayoutPosition(), s.toString());
                 }
 
                 @Override
@@ -183,6 +184,28 @@ public class TermVolumeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
                 }
             });
+
+            volume.setFilters(new InputFilter[]{new InputFilter() {
+                @Override
+                public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                    if (source.equals(".") && dest.toString().length() == 0) {
+                        return "0.";
+                    }
+                    if (dest.toString().contains(".")) {
+                        int index = dest.toString().indexOf(".");
+                        int mlength = dest.toString().substring(index).length();
+                        if (mlength == 2) {
+                            return "";
+                        }
+                    }
+
+                    if (dest.toString().length() == 5)
+                        return "";
+
+                    return null;
+                }
+            }});
+
         }
 
         @Override
@@ -198,7 +221,7 @@ public class TermVolumeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         holder.name.setVisibility(item.isShowName() ? View.VISIBLE : View.INVISIBLE);
 
         holder.name.setText(item.getName());
-        holder.volume.setText(item.getVolume() == 0 ? "" : new DecimalFormat("#0.00").format(item.getVolume()));
+        holder.volume.setText(item.getVolume() == 0 ? "" : String.valueOf(CheckUtils.getInstance().format(item.getVolume())));
 
         holder.delete.setVisibility(item.getVolume() > 0 ? View.VISIBLE : View.INVISIBLE);
 
@@ -229,7 +252,7 @@ public class TermVolumeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TermVolumeTotal total = (TermVolumeTotal) list.get(position);
 
         holder.unit.setText(total.getUnit());
-        holder.volume.setText(new DecimalFormat("#0.00").format(total.getTotal()));
+        holder.volume.setText(String.valueOf(CheckUtils.getInstance().format(total.getTotal())));
 
     }
 

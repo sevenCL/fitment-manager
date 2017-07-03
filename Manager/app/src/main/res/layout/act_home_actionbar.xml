@@ -60,29 +60,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/tab_income_ll"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:onClick="btClick"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/tab_income"
-                android:layout_marginTop="2dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bottom_tab_income"
-                style="@style/BottomTabText"/>
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/tab_user_ll"
             android:layout_width="0dp"
             android:layout_height="match_parent"

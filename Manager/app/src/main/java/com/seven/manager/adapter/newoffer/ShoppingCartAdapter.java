@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
+import com.seven.library.utils.CheckUtils;
 import com.seven.manager.R;
 import com.seven.manager.model.newoffer.BaseItem;
 
@@ -95,7 +96,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         BaseItem item = list.get(position);
 
         holder.name.setText(item.getName());
-        holder.volume.setText(new DecimalFormat("#0.00").format(item.getVolume()) + item.getUnitName());
+        holder.volume.setText(CheckUtils.getInstance().format(item.getVolume()) + item.getUnitName());
 
     }
 

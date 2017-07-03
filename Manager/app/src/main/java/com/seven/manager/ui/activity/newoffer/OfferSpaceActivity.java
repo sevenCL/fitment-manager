@@ -19,6 +19,7 @@ import com.seven.library.http.RequestUtils;
 import com.seven.library.http.Urls;
 import com.seven.library.json.JsonHelper;
 import com.seven.library.task.ActivityStack;
+import com.seven.library.utils.CheckUtils;
 import com.seven.library.utils.LogUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.library.utils.ToastUtils;
@@ -179,12 +180,15 @@ public class OfferSpaceActivity extends BaseTitleActivity implements HttpRequest
         mTempList = new ArrayList<>();
         mSpaceList = new ArrayList<>();
 
-        //数据库
-        db = x.getDb(LibApplication.daoConfig);
-
         try {
+
+            //数据库
+            db = x.getDb(LibApplication.daoConfig);
+
             dbOfferHouse = db.selector(DbOfferHouse.class).findFirst();
         } catch (DbException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -509,7 +513,7 @@ public class OfferSpaceActivity extends BaseTitleActivity implements HttpRequest
         }
 
         mSpaceArea.setText(totalArea == 0 ? ResourceUtils.getInstance().getText(R.string.offer_space_default_value)
-                : new DecimalFormat("#0.00").format(totalArea) + "m²");
+                : String.valueOf(CheckUtils.getInstance().format(totalArea) + "m²"));
 
     }
 

@@ -47,11 +47,15 @@ public class ResourceService extends Service implements HttpRequestCallBack {
     public void onCreate() {
         super.onCreate();
 
-        db = x.getDb(LibApplication.daoConfig);
-
         try {
+
+            db = x.getDb(LibApplication.daoConfig);
+
             resPersonality = db.selector(ResPersonality.class).findFirst();
+
         } catch (DbException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

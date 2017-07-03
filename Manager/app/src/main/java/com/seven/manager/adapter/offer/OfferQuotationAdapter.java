@@ -14,6 +14,7 @@ import com.seven.library.callback.JsonCallBack;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.library.config.RunTimeConfig;
 import com.seven.library.json.JsonHelper;
+import com.seven.library.utils.CheckUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.library.view.AutoLoadRecyclerView;
 import com.seven.manager.R;
@@ -156,7 +157,7 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         holder.name.setText(title.getOwnerName());
         holder.address.setText(title.getHouseNumber());
-        holder.total.setText(new DecimalFormat("#0.00").format(title.getTotalAmount()));
+        holder.total.setText(String.valueOf(CheckUtils.getInstance().format(title.getTotalAmount())));
 
     }
 
@@ -186,8 +187,8 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         com.seven.manager.model.offer.QuotationPackage packages = (com.seven.manager.model.offer.QuotationPackage) mList.get(position);
 
         holder.houseInfo.setText(packages.getHouseInfo());
-        holder.area.setText(new DecimalFormat("#0.00").format(packages.getArea()));
-        holder.money.setText(new DecimalFormat("#0.00").format(packages.getPackageMoney()));
+        holder.area.setText(String.valueOf(CheckUtils.getInstance().format(packages.getArea())));
+        holder.money.setText(String.valueOf(CheckUtils.getInstance().format(packages.getPackageMoney())));
 
         mPackageList = new ArrayList<>();
 
@@ -242,7 +243,7 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         com.seven.manager.model.offer.QuotationPersonality personality = (com.seven.manager.model.offer.QuotationPersonality) mList.get(position);
 
         holder.count.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_personality_count, personality.getPersonalityCount()));
-        holder.money.setText(new DecimalFormat("#0.00").format(personality.getPersonalityMoney()));
+        holder.money.setText(String.valueOf(CheckUtils.getInstance().format(personality.getPersonalityMoney())));
 
         mPersonalityList = new ArrayList<>();
 
@@ -309,6 +310,6 @@ public class OfferQuotationAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         holder.area.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_quotation_date_area, date.getArea()));
 
-        holder.total.setText(new DecimalFormat("#0.00").format(date.getTotalAmount()));
+        holder.total.setText(String.valueOf(CheckUtils.getInstance().format(date.getTotalAmount())));
     }
 }

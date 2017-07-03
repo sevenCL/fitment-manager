@@ -62,6 +62,7 @@ public class LoginActivity extends BaseActivity implements HttpRequestCallBack {
         initData(null);
 
         listener();
+
     }
 
     @Override

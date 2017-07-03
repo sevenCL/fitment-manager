@@ -20,6 +20,7 @@ import com.seven.library.http.RequestUtils;
 import com.seven.library.http.Urls;
 import com.seven.library.json.JsonHelper;
 import com.seven.library.task.ActivityStack;
+import com.seven.library.utils.CheckUtils;
 import com.seven.library.utils.LogUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.library.utils.ToastUtils;
@@ -176,18 +177,18 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
                     packageMoney = money;
 
                     mPackageMoney.setText(ResourceUtils.getInstance().getFormatText(
-                            R.string.offer_total_package, new DecimalFormat("#0.00").format(money)));
+                            R.string.offer_total_package, String.valueOf(CheckUtils.getInstance().format(money))));
                 } else if (tag == RunTimeConfig.OfferFGTagConfig.TAG_PERSONALITY) {
 
                     double money = (double) task.getParamObjects()[2];
                     personalityMoney = money;
 
                     mPersonalityMoney.setText(ResourceUtils.getInstance().getFormatText(
-                            R.string.offer_total_personality, new DecimalFormat("#0.00").format(money)));
+                            R.string.offer_total_personality, String.valueOf(CheckUtils.getInstance().format(money))));
                 }
 
                 mTotalMoney.setText(ResourceUtils.getInstance().getFormatText(
-                        R.string.offer_total_count, new DecimalFormat("#0.00").format(packageMoney + personalityMoney)));
+                        R.string.offer_total_count, String.valueOf(CheckUtils.getInstance().format(packageMoney + personalityMoney))));
 
                 break;
 
@@ -667,7 +668,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
                 dbQuotation.setProjectId(mModel.getProjectId());
                 dbQuotation.setContent(jsonObject.toString());
                 db.save(dbQuotation);
-            }else {
+            } else {
                 dbQuotation.setContent(jsonObject.toString());
                 db.saveOrUpdate(dbQuotation);
             }
@@ -675,7 +676,7 @@ public class OfferActivity extends BaseTitleActivity implements HttpRequestCallB
             e.printStackTrace();
         }
 
-        OfferQuotationActivity.start(false, mModel,RunTimeConfig.FlowConfig.OFFER_IS_COMPILE);
+        OfferQuotationActivity.start(false, mModel, RunTimeConfig.FlowConfig.OFFER_IS_COMPILE);
 
     }
 /*

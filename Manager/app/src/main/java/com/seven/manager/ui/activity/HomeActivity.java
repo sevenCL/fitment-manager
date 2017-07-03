@@ -19,6 +19,7 @@ import com.seven.library.utils.LogUtils;
 import com.seven.library.utils.PermissionUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.manager.R;
+import com.seven.manager.service.ResourceService;
 import com.seven.manager.ui.fragment.tab.IncomeFragment;
 import com.seven.manager.ui.fragment.tab.OrderFragment;
 import com.seven.manager.ui.fragment.tab.ProjectFragment;
@@ -35,7 +36,6 @@ public class HomeActivity extends BaseTitleActivity {
     //底部标签
     private LinearLayout mOrderLl;
     private LinearLayout mProjectLl;
-    private LinearLayout mIncomeLl;
     private LinearLayout mUserLl;
 
     //模块
@@ -110,7 +110,6 @@ public class HomeActivity extends BaseTitleActivity {
 
         mOrderLl = getView(mOrderLl, R.id.tab_order_ll);
         mProjectLl = getView(mProjectLl, R.id.tab_project_ll);
-        mIncomeLl = getView(mIncomeLl, R.id.tab_income_ll);
         mUserLl = getView(mUserLl, R.id.tab_user_ll);
 
     }
@@ -120,6 +119,10 @@ public class HomeActivity extends BaseTitleActivity {
 
         //存储调用、手机状态权限
         PermissionUtils.getInstance(getPackageManager()).sdcardPermission(this);
+
+        Intent serviceIntent = new Intent(LibApplication.getInstance(), ResourceService.class);
+
+        startService(serviceIntent);
 
         //默认选中预约
         mOrderFg = new OrderFragment();
@@ -156,16 +159,6 @@ public class HomeActivity extends BaseTitleActivity {
 
                 break;
 
-            //收益
-            case R.id.tab_income_ll:
-
-                mIncomeFg = new IncomeFragment();
-                fragment = mIncomeFg;
-                tabLayout = mIncomeLl;
-                title = R.string.bottom_tab_income;
-
-                break;
-
             //我的
             case R.id.tab_user_ll:
 
@@ -190,7 +183,6 @@ public class HomeActivity extends BaseTitleActivity {
         if (!layout.isSelected()) {
             mOrderLl.setSelected(layout == mOrderLl);
             mProjectLl.setSelected(layout == mProjectLl);
-            mIncomeLl.setSelected(layout == mIncomeLl);
             mUserLl.setSelected(layout == mUserLl);
             replaceFragment(R.id.home_container_fl, fragment);
             setTitle(ResourceUtils.getInstance().getText(title));
@@ -208,7 +200,7 @@ public class HomeActivity extends BaseTitleActivity {
         updManager.setParameter(UpdateConstants.EXTRA_NOTI_ICON, "true");
         //设置更新提示类型，默认为通知栏提示
         updManager.setParameter(UpdateConstants.EXTRA_STYLE, UpdateConstants.UPDATE_UI_DIALOG);
-        // 启动自动更新
+        //启动自动更新
         updManager.autoUpdate(LibApplication.getInstance(), updateListener);
 
     }

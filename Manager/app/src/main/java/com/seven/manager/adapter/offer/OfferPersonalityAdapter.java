@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.library.config.RunTimeConfig;
+import com.seven.library.utils.CheckUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.library.view.DashedLineView;
 import com.seven.manager.R;
@@ -139,13 +140,13 @@ public class OfferPersonalityAdapter extends RecyclerView.Adapter<RecyclerView.V
         holder.mName.setText(item.getSpace() + "-" + item.getTerm());
 
         holder.mPrice.setText(ResourceUtils.getInstance().getFormatText(
-                R.string.offer_personality_price, new DecimalFormat("#0.00").format(item.getPrice()) + "/" + item.getUnit()));
+                R.string.offer_personality_price,String.valueOf(CheckUtils.getInstance().format(item.getPrice())) + "/" + item.getUnit()));
 
         holder.mVolume.setText(ResourceUtils.getInstance().getFormatText(
-                R.string.offer_personality_volume, new DecimalFormat("#0.00").format(item.getVolume()) + item.getUnit()));
+                R.string.offer_personality_volume, String.valueOf(CheckUtils.getInstance().format(item.getVolume()) + item.getUnit())));
 
         holder.mSubTotal.setText(ResourceUtils.getInstance().getFormatText(
-                R.string.offer_personality_small_total, new DecimalFormat("#0.00").format(item.getSmallTotal())));
+                R.string.offer_personality_small_total, String.valueOf(CheckUtils.getInstance().format(item.getSmallTotal()))));
 
         holder.mLine.setVisibility(position == mList.size() - 2 ? View.GONE : View.VISIBLE);
     }
@@ -172,7 +173,7 @@ public class OfferPersonalityAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         holder.mCount.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_personality_count, total.getCount()));
 
-        holder.mTotal.setText(new DecimalFormat("#0.00").format(total.getTotal()));
+        holder.mTotal.setText(String.valueOf(CheckUtils.getInstance().format(total.getTotal())));
     }
 
 }

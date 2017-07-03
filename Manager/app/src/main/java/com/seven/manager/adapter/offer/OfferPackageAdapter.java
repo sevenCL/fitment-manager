@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.seven.library.base.BaseViewHolder;
 import com.seven.library.callback.ListItemCallBack;
 import com.seven.library.config.RunTimeConfig;
+import com.seven.library.utils.CheckUtils;
 import com.seven.library.utils.ResourceUtils;
 import com.seven.library.view.DashedLineView;
 import com.seven.manager.R;
@@ -181,8 +182,8 @@ public class OfferPackageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         holder.mLine.setVisibility(position == mList.size() - 2 ? View.GONE : View.VISIBLE);
 
-        holder.mArea.setText(item.getArea() == 0 ? "" : new DecimalFormat("#0.00").format(item.getArea()));
-        holder.mPerimeter.setText(item.getPerimeter() == 0 ? "" : new DecimalFormat("#0.00").format(item.getPerimeter()));
+        holder.mArea.setText(item.getArea() == 0 ? "" : String.valueOf(CheckUtils.getInstance().format(item.getArea())));
+        holder.mPerimeter.setText(item.getPerimeter() == 0 ? "" : String.valueOf(CheckUtils.getInstance().format(item.getPerimeter())));
 
     }
 
@@ -218,14 +219,14 @@ public class OfferPackageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         holder.mHouseInfo.setText(total.getHouseInfo());
 
-        holder.mTotalArea.setText(new DecimalFormat("#0.00").format(total.getTotalArea()));
+        holder.mTotalArea.setText(String.valueOf(CheckUtils.getInstance().format(total.getTotalArea())));
 
 //        holder.mMinLayout.setVisibility(total.getTotalArea() < total.getMinArea() ? View.VISIBLE : View.GONE);
 
         holder.mMinArea.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_package_min_area, total.getMinArea()));
         holder.mMinAreaTwo.setText(ResourceUtils.getInstance().getFormatText(R.string.offer_package_min_area_two, total.getMinArea()));
 
-        holder.mTotalMoney.setText(new DecimalFormat("#0.00").format(total.getTotalMoney()));
+        holder.mTotalMoney.setText(String.valueOf(CheckUtils.getInstance().format(total.getTotalMoney())));
     }
 
     private void update() {
@@ -251,11 +252,11 @@ public class OfferPackageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         total.setTotalArea(totalArea);
         total.setTotalMoney(totalMoney);
 
-        packageTotal.mTotalArea.setText(new DecimalFormat("#0.00").format(total.getTotalArea()));
+        packageTotal.mTotalArea.setText(String.valueOf(CheckUtils.getInstance().format(total.getTotalArea())));
 
 //        packageTotal.mMinLayout.setVisibility(total.getTotalArea() < total.getMinArea() ? View.VISIBLE : View.GONE);
 
-        packageTotal.mTotalMoney.setText(new DecimalFormat("#0.00").format(total.getTotalMoney()));
+        packageTotal.mTotalMoney.setText(String.valueOf(CheckUtils.getInstance().format(total.getTotalMoney())));
 
         mCallBack.onItemClick(packageTotal.mTotalArea, mList.size() - 1);
     }
